@@ -1,0 +1,9 @@
+# ~/.config/zsh/functions/interactive/c_init
+
+# Definition
+"$ZSH_SCRIPTS_DIR/project-management/c/bin/c_init_script" "$@"
+
+if [ -n "$1" ]; then
+  dir_root="$(realpath $1)"
+  cd "$dir_root"
+fi

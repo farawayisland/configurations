@@ -1,0 +1,16 @@
+# ~/.config/zsh/.stow-local-ignore
+# Everything except .zshenv
+\.DS_Store
+functions
+\.git
+\.gitignore
+themes
+\.zcompdump.*
+\.zlogin
+\.zlogout
+\.zprofile
+\.zsh_history
+\.zsh_sessions
+\.zshenv_secondary
+\.zshrc
+.*\.zwc.*

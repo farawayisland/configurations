@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+# ~/.config/zsh/functions/oxipng_optimize
+## Dependencies:
+## oxipng | https://formulae.brew.sh/formula/oxipng
+## Syntax:
+## oxipng_optimize <input> [<optimization_level>]
+oxipng_optimize () {
+  if [ "$2" != "" ]
+  then
+    local optimization_level="$2"
+  else
+    local optimization_level="max"
+  fi
+  oxipng -o "$optimization_level" --alpha --strip safe "$1" "$@"
+}

@@ -1,0 +1,25 @@
+#!/usr/bin/env zsh
+# ~/.config/zsh/functions/git_diff_with_separators_counting_from_head
+
+# Dependencies
+## git | https://formulae.brew.sh/formula/git
+
+# Definition
+git_diff_with_separators_counting_from_head () {
+  if [[ $# -eq 0 ]] ; then
+    printf '%s\n' 'No argument supplied' >&2
+    return 1
+  fi
+
+  printf '─%.0s' $(seq 1 $(tput cols))
+  printf '\n'
+
+  count_from_head="$@[-1]"
+  commit="HEAD~$count_from_head"
+  parent="HEAD~$(($count_from_head + 1))"
+
+  git diff "${@[1,-2]}" "$parent" "$commit"
+
+  printf '─%.0s' $(seq 1 $(tput cols))
+  printf '\n'
+}

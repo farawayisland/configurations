@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+# ~/.config/zsh/functions/kitten_rename
+kitten_launch () {
+  kitten @ set-tab-title "$1"
+  kitten @ set-window-title "kitty | $1"
+}

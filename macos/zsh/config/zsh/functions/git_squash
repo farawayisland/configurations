@@ -1,0 +1,22 @@
+#!/usr/bin/env zsh
+# ~/.config/zsh/functions/git_squash
+
+# Dependencies
+## git | https://formulae.brew.sh/formula/git
+
+# Source
+## https://stackoverflow.com/a/5201642
+
+# Syntax
+## git_squash <n_last_commits> <commit_message_title> [<commit_message_description>]
+
+# Definition
+git_squash () {
+  git reset --soft HEAD~"$1"
+  if [ "$3" != "" ]
+  then
+    git commit -m "$2" -m "$3"
+  else
+    git commit -m "$2"
+  fi
+}

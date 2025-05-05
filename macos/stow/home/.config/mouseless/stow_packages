@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+# ~/.config/stow/home/.config/mouseless/stow_packages
+cp "$STOW_CONFIG_MOUSELESS_DIR/.stow-local-ignore" "$MOUSELESS_CONFIG_DIR/.stow-local-ignore"
+"$STOW_EXECUTABLE" -d "$MOUSELESS_CONFIG_DIR" -t "$HOME/Library/Application Support/Mouseless/configs" .

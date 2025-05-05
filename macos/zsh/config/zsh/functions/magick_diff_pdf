@@ -1,0 +1,20 @@
+#!/usr/bin/env zsh
+# ~/.config/zsh/functions/magick_diff_pdf
+## Dependencies:
+## ImageMagick | https://formulae.brew.sh/formula/imagemagick
+## Source:
+## https://stackoverflow.com/a/33673440
+## Syntax:
+## magick_diff <input_1> <input_2> <density> [<diff>]
+magick_diff_pdf () {
+  if [ "$4" != "" ]
+  then
+    local diff="$4"
+  else
+    local diff=diff.png
+  fi
+    magick '(' -units PixelsPerInch -density $3 "$2" -quality 100 -flatten -grayscale Rec709Luminance ')' \
+    '(' -units PixelsPerInch -density $3 "$1" -quality 100 -flatten -grayscale Rec709Luminance ')' \
+    '(' -clone 0-1 -compose darken -composite ')' \
+    -channel RGB -combine "$diff"
+}

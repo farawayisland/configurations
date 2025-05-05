@@ -1,0 +1,63 @@
+{
+  "attributes" : {
+    "color" : "#f1b2e1"
+  },
+  "background" : {
+    "color" : "#171622"
+  },
+  "characters" : {
+    "color" : "#f5c2e7"
+  },
+  "commands" : {
+    "color" : "#77a2f8"
+  },
+  "comments" : {
+    "color" : "#595c73"
+  },
+  "highlight" : {
+    "color" : "#94e2d5",
+    "usesSystemSetting" : false
+  },
+  "insertionPoint" : {
+    "color" : "#f5e0dc",
+    "usesSystemSetting" : false
+  },
+  "invisibles" : {
+    "color" : "#6c7086"
+  },
+  "keywords" : {
+    "color" : "#be90f5"
+  },
+  "lineHighlight" : {
+    "color" : "#252534"
+  },
+  "metadata" : {
+    "author" : "Catppuccin",
+    "description" : "Soothing pastel theme for CotEditor",
+    "distributionURL" : "https:\/\/github.com\/catppuccin\/coteditor",
+    "license" : "MIT"
+  },
+  "name" : "Catppuccin Mocha (Customized)",
+  "numbers" : {
+    "color" : "#fab387"
+  },
+  "selection" : {
+    "color" : "#353648",
+    "usesSystemSetting" : false
+  },
+  "strings" : {
+    "color" : "#a6e3a1"
+  },
+  "text" : {
+    "color" : "#c2cbf1"
+  },
+  "types" : {
+    "color" : "#f7dca0"
+  },
+  "values" : {
+    "color" : "#f38ba8"
+  },
+  "variables" : {
+    "color" : "#f7a374"
+  }
+}

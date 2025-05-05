@@ -1,0 +1,11 @@
+# ~/.config/zsh/functions/interactive/magick_pdf2image
+## Dependencies:
+## ImageMagick | https://formulae.brew.sh/formula/imagemagick
+## Syntax:
+## magick_pdf2image <input> <density> <output> [<background>]
+if [ "$4" != "" ]
+then
+  magick -units PixelsPerInch -density $2 $1 -background $4 -alpha remove -quality 100 $3
+else
+  magick -units PixelsPerInch -density $2 $1 -alpha remove -quality 100 $3
+fi

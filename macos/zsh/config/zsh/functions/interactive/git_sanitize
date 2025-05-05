@@ -1,0 +1,9 @@
+# ~/.config/zsh/functions/interactive/git_sanitize
+
+# Dependencies
+## git | https://formulae.brew.sh/formula/git
+
+# Source: https://unix.stackexchange.com/a/161853
+
+# Definition
+git ls-files -z | while IFS= read -rd '' f; do if file --brief --mime-encoding "$f" | grep -qv binary; then tail -c1 < "$f" | read -r _ || echo >> "$f"; fi; done

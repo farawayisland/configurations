@@ -1,0 +1,328 @@
+tap "d12frosted/emacs-plus", trusted: true
+tap "lyraphase/right2repair", trusted: true
+# Spell checker with better logic than ispell
+brew "aspell"
+# Gnome disk usage analyzer
+brew "baobab"
+# Text-based UI library
+brew "ncurses"
+# Bourne-Again SHell, a UNIX command interpreter
+brew "bash"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
+# GNU binary tools for native development
+brew "binutils"
+# Turn English phrases to C or C++ declarations
+brew "cdecl"
+# Human-friendly and fast alternative to cut and (sometimes) awk
+brew "choose-rust"
+# Cross-platform make
+brew "cmake"
+# Documentation for CMake
+brew "cmake-docs"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
+# PDF Command-line Tools
+brew "cpdf"
+# Get a file from an HTTP, HTTPS or FTP server
+brew "curl"
+# GNU Privacy Guard (OpenPGP)
+brew "gnupg"
+# Visually compare two PDF files
+brew "diff-pdf"
+# File comparison utilities
+brew "diffutils"
+# Convert text between DOS, UNIX, and Mac formats
+brew "dos2unix"
+# Perl lib for reading and writing EXIF metadata
+brew "exiftool"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.14"
+# PDF reader for terminal emulators using the Kitty image protocol
+brew "fancy-cat"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
+# Play, record, convert, and stream select audio and video codecs
+brew "ffmpeg"
+# Collection of GNU find, xargs, and locate
+brew "findutils"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# GNU awk utility
+brew "gawk"
+# GNU compiler collection
+brew "gcc"
+# GitHub command-line tool
+brew "gh"
+# Interpreter for PostScript and PDF
+brew "ghostscript"
+# Distributed revision control system
+brew "git"
+# Syntax-highlighting pager for git and diff output
+brew "git-delta"
+# GNU implementation of the famous stream editor
+brew "gnu-sed"
+# GNU version of the tar archiving utility
+brew "gnu-tar"
+# GNU implementation of time utility
+brew "gnu-time"
+# GNU implementation of which utility
+brew "gnu-which"
+# GNU grep, egrep and fgrep
+brew "grep"
+# Popular GNU data compression program
+brew "gzip"
+# Tools and libraries to manipulate images in select formats
+brew "imagemagick"
+# Convert images to PDF via direct JPEG inclusion
+brew "img2pdf"
+# Pager program similar to more
+brew "less"
+# Next-gen compiler infrastructure
+brew "llvm"
+# Clone of ls with colorful output, file type icons, and more
+brew "lsd"
+# Powerful, lightweight programming language
+brew "lua"
+# Utility for directing compilation
+brew "make"
+# Unix documentation system
+brew "man-db"
+# Mac App Store command-line interface
+brew "mas"
+# Fly through your shell history
+brew "mcfly"
+# UNIX movie player
+brew "mplayer"
+# Feature-rich command-line audio/video downloader
+brew "yt-dlp"
+# Media player based on MPlayer and mplayer2
+brew "mpv"
+# NCurses Disk Usage
+brew "ncdu"
+# Incremental parsing library
+brew "tree-sitter"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
+# Graphical client for the Soulseek peer-to-peer network
+brew "nicotine-plus"
+# Open-source, cross-platform JavaScript runtime environment
+brew "node"
+# Very fast SIMD-first image comparison library (with nodejs API)
+brew "odiff"
+# Multithreaded PNG optimizer written in Rust
+brew "oxipng"
+# Swiss-army knife of markup format conversion
+brew "pandoc"
+# Shell command parallelization utility
+brew "parallel"
+# Port of pdftk in java
+brew "pdftk-java"
+# Highly capable, feature-rich programming language
+brew "perl"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.13"
+# Perl-powered file rename script with many helpful built-ins
+brew "rename"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# Utility that provides fast incremental file transfer
+brew "rsync"
+# Rust toolchain installer
+brew "rustup"
+# Intuitive find & replace CLI
+brew "sd"
+# 7-Zip is a file archiver with a high compression ratio
+brew "sevenzip"
+# Simple keystroke visualizer
+brew "showkey"
+# SMART hard drive monitoring
+brew "smartmontools"
+# Organize software neatly under a single directory tree (e.g. /usr/local)
+brew "stow"
+# Official tldr client written in Rust
+brew "tlrc"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
+# Parser generator tool
+brew "tree-sitter-cli"
+# Extraction utility for .zip compressed archives
+brew "unzip"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
+# Open-source industry-supported PDF/A validation
+brew "verapdf"
+# Vi 'workalike' with many additional features
+brew "vim"
+# Generator for LS_COLORS with support for multiple color themes
+brew "vivid"
+# Executes a program periodically, showing output fullscreen
+brew "watch"
+# Internet file retriever
+brew "wget"
+# PDF viewer
+brew "xpdf"
+# Command-line program for getting and setting the contents of the X selection
+brew "xsel"
+# Compression and file packaging/archive utility
+brew "zip"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
+# UNIX shell (command interpreter)
+brew "zsh"
+# Real-time type-ahead completion for Zsh
+brew "zsh-autocomplete"
+# Fish-like fast/unobtrusive autosuggestions for zsh
+brew "zsh-autosuggestions"
+# Fish shell like syntax highlighting for zsh
+brew "zsh-syntax-highlighting"
+# GNU Emacs text editor
+brew "d12frosted/emacs-plus/emacs-plus@30", args: ["with-debug", "with-imagemagick", "with-xwidgets"]
+# Application launcher and productivity software
+cask "alfred"
+# Enable Windows-like alt-tab
+cask "alt-tab"
+# iOS App Store alternative
+cask "altserver"
+# Memory training application
+cask "anki"
+# Application uninstaller
+cask "appcleaner"
+# User-friendly GUI app for Homebrew
+cask "applite"
+# Free app that makes your Internet safer
+cask "cloudflare-warp"
+# Plain-text editor for web pages, program source codes and more
+cask "coteditor"
+# Preference Pane for controlling cursor hiding
+cask "cursorcerer"
+# Browser for SQLite databases
+cask "db-browser-for-sqlite"
+# Voice and text chat software
+cask "discord"
+# Eclipse IDE for Java developers
+cask "eclipse-java"
+# Audio player
+cask "foobar2000"
+# Audio converter and CD ripper
+cask "freac"
+# Hosts file editor/manager
+cask "gas-mask"
+# Web browser
+cask "google-chrome"
+# iOS Sideloading Companion
+cask "iloader"
+# iPhone management application
+cask "imazing"
+# Download manager
+cask "jdownloader"
+# Subtitle editor
+cask "jubler"
+# Keyboard customiser
+cask "karabiner-elements"
+# Free and Open Source Video Editor
+cask "kdenlive"
+# Audio tagger focusing on efficiency
+cask "kid3"
+# GPU-based terminal emulator
+cask "kitty"
+# Free and open-source painting and sketching program
+cask "krita"
+# Support for Logitech G gear
+cask "logitech-g-hub"
+# Open-source firewall to block unknown outgoing connections
+cask "lulu"
+# Full TeX Live distribution without GUI applications
+cask "mactex-no-gui"
+# Video format converter (transcoder)
+cask "makemkv"
+# Audio converter
+cask "mediahuman-audio-converter"
+# Research management tool
+cask "mendeley-reference-manager"
+# Spreadsheet software
+cask "microsoft-excel"
+# Presentation software
+cask "microsoft-powerpoint"
+# Meet, chat, call, and collaborate in just one place
+cask "microsoft-teams"
+# Word processor
+cask "microsoft-word"
+# GUI including a set of tools to create, alter and inspect Matroska files (MKV)
+cask "mkvtoolnix-app"
+# Mouse control with the keyboard
+cask "mouseless"
+# Discord music status that works with any media player
+cask "music-presence"
+# Rename a list of files quickly
+cask "namechanger"
+# Neovim Client
+cask "neovide-app"
+# Knowledge base that works on top of a local folder of plain text Markdown files
+cask "obsidian"
+# Minecraft launcher
+cask "prismlauncher"
+# Peer to peer Bitorrent client
+cask "qbittorrent"
+# Scientific and technical publishing system built on Pandoc
+cask "quarto"
+# Move and resize windows using keyboard shortcuts or snap areas
+cask "rectangle"
+# Online multiplayer game platform
+cask "roblox"
+# Instant messaging application focusing on security
+cask "signal"
+# PDF viewer designed for reading research papers and technical books
+cask "sioyek"
+# File sharing network
+cask "soulseek"
+# Video game digital distribution service
+cask "steam"
+# JDK from the Eclipse Foundation (Adoptium)
+cask "temurin@17"
+# JDK from the Eclipse Foundation (Adoptium)
+cask "temurin@21"
+# Open-source code editor
+cask "visual-studio-code"
+# Create, manage, and run virtual machines
+cask "lyraphase/right2repair/vmware-fusion@13.5.2"
+# GPU-accelerated cross-platform terminal emulator and multiplexer
+cask "wezterm"
+# Lossless audio decoder
+cask "xld"
+# Photo viewer, image manager, image resiser and more
+cask "xnviewmp"
+# Video communication and virtual meeting platform
+cask "zoom"
+# OpenJDK distribution from Azul
+cask "zulu@8"
+mas "NepTunes", id: 1006739057
+mas "Silicio", id: 933627574
+vscode "astral-sh.ty"
+vscode "asvetliakov.vscode-neovim"
+vscode "catppuccin.catppuccin-vsc"
+vscode "charliermarsh.ruff"
+vscode "esbenp.prettier-vscode"
+vscode "formulahendry.code-runner"
+vscode "google.colab"
+vscode "james-yu.latex-workshop"
+vscode "johnnymorganz.stylua"
+vscode "llvm-vs-code-extensions.vscode-clangd"
+vscode "ms-python.debugpy"
+vscode "ms-python.python"
+vscode "ms-python.vscode-pylance"
+vscode "ms-python.vscode-python-envs"
+vscode "ms-toolsai.jupyter"
+vscode "ms-toolsai.jupyter-keymap"
+vscode "ms-toolsai.jupyter-renderers"
+vscode "ms-toolsai.vscode-jupyter-cell-tags"
+vscode "ms-toolsai.vscode-jupyter-slideshow"
+vscode "ms-vscode.cpptools"
+vscode "pkief.material-icon-theme"
+vscode "redhat.java"
+vscode "sumneko.lua"
+vscode "vscjava.vscode-gradle"
+vscode "vscjava.vscode-java-pack"
+vscode "xaver.clang-format"

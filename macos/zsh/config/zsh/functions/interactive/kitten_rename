@@ -1,0 +1,4 @@
+# ~/.config/zsh/functions/interactive/kitten_rename
+## Source: https://stackoverflow.com/a/26615036
+kitten @ set-tab-title "$1"
+kitten @ set-window-title "kitty | $1"

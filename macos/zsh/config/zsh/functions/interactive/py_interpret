@@ -1,0 +1,10 @@
+# ~/.config/zsh/functions/interactive/py_interpret
+## Dependencies:
+## uv | https://formulae.brew.sh/formula/uv
+print -P "%F{green}"
+if [ -z "$1" ]; then
+  uv run "python"
+else
+  uv run "$@"
+fi
+printf "\n"

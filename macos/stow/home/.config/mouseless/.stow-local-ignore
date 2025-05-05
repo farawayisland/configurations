@@ -1,0 +1,4 @@
+# ~/.config/stow/home/.config/mouseless/.stow-local-ignore
+\.DS_Store
+\.git
+\.gitignore

@@ -1,0 +1,22 @@
+# ~/.config/zsh/functions/interactive/kitten_open_project
+
+# Dependencies
+## kitty | https://formulae.brew.sh/cask/kitty
+## Neovim | https://formulae.brew.sh/formula/neovim
+### persistence.nvim | https://github.com/folke/persistence.nvim
+
+# Sources
+## https://apple.stackexchange.com/a/318217
+## https://stackoverflow.com/a/26615036
+
+# Definition
+if [ -n "$1" ]; then
+  [ -d "$1" ] || mkdir -p "$1"
+  cd "$1"
+fi
+if [ -n "$2" ]; then
+  kitten @ set-tab-title "$2"
+  kitten @ set-window-title "kitty | $2"
+fi
+printf '\e[2J\e[3J\e[1;1H'
+nvim -c "lua require('persistence').load()" -c "terminal" -c "startinsert" -c "sil! ?\v(^On branch )@<=(.{-})($)@=" -c "nohlsearch"

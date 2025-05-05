@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+# ~/.config/zsh/functions/print_red
+## Source: https://stackoverflow.com/a/77879273
+print_red () {
+  if [ "$1" != "-n" ]
+  then
+    print -P "%F{red}$@"
+  else
+    print -Pn "%F{red}${@:2}"
+  fi
+}

@@ -1,0 +1,17 @@
+# ~/.config/zsh/functions/interactive/magick_diff
+## Dependencies:
+## ImageMagick | https://formulae.brew.sh/formula/imagemagick
+## Source:
+## https://stackoverflow.com/a/33673440
+## Syntax:
+## magick_diff <input_1> <input_2> [<diff>]
+if [ "$3" != "" ]
+then
+  local diff="$3"
+else
+  local diff=diff.png
+fi
+  magick '(' "$2" -flatten -grayscale Rec709Luminance ')' \
+  '(' "$1" -flatten -grayscale Rec709Luminance ')' \
+  '(' -clone 0-1 -compose darken -composite ')' \
+  -channel RGB -combine "$diff"

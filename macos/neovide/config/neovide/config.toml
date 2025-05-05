@@ -1,0 +1,27 @@
+# ~/.config/neovide/config.toml
+# Neovim path
+neovim-bin = "/opt/homebrew/bin/nvim"
+
+# Frame
+## Source: https://neovide.dev/command-line-reference.html#frame.
+frame = "buttonless"
+
+# Fonts
+[font]
+size = 16
+
+[[font.normal]]
+family = "JetBrainsMono Nerd Font Mono"
+style = "SemiBold"
+
+[[font.bold]]
+family = "JetBrainsMono Nerd Font Mono"
+style = "Bold"
+
+[[font.italic]]
+family = "JetBrainsMono Nerd Font Mono"
+style = "SemiBold Italic"
+
+[[font.bold_italic]]
+family = "JetBrainsMono Nerd Font Mono"
+style = "Bold Italic"

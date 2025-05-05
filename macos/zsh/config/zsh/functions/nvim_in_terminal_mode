@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+# ~/.config/zsh/functions/nvim_in_terminal_mode
+
+# Dependencies
+## Neovim | https://formulae.brew.sh/formula/neovim
+### persistence.nvim | https://github.com/folke/persistence.nvim
+
+# Definition
+nvim_in_terminal_mode () {
+  nvim -c "lua require('persistence').load()" -c 'terminal' -c 'startinsert' -c 'sil! ?\v(^On branch )@<=(.{-})($)@=' -c 'nohlsearch'
+}

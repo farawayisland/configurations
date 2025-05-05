@@ -1,0 +1,27 @@
+#!/usr/bin/env zsh
+# ~/.config/zsh/.zshenv_secondary
+# Environment variables for miscellaneous user-directories which would be
+# created if they don't already exist (cont'd)
+## Projects (cont'd)
+### Note-taking (cont'd)
+#### Non-fiction (cont'd)
+#### # Miscellaneous (cont'd)
+#### ## Transgender topics
+export TRANSGENDER="$MISCELLANEOUS/transgender" # Git-tracked
+[ -d "$TRANSGENDER" ] || mkdir -p "$TRANSGENDER"
+
+#### ### Transgender-topic submodules
+export TRANSGENDER_SUBMODULES="$TRANSGENDER/submodules"
+[ -d "$TRANSGENDER_SUBMODULES" ] || mkdir -p "$TRANSGENDER_SUBMODULES"
+
+#### #### hrt
+export HRT="$TRANSGENDER_SUBMODULES/hrt"
+[ -d "$HRT" ] || mkdir -p "$HRT"
+
+#### #### # feminizing
+export FEMINIZING="$HRT/feminizing"
+[ -d "$FEMINIZING" ] || mkdir -p "$FEMINIZING"
+
+#### #### ## pghrt
+export PGHRT="$FEMINIZING/pghrt" # Git-tracked
+[ -d "$PGHRT" ] || mkdir -p "$PGHRT"
