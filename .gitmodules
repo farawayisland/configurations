@@ -1,0 +1,13 @@
+[submodule "emacs/config/emacs"]
+	path = emacs/config/emacs
+	url = https://github.com/farawayisland/my-minimal-emacs.d.git
+[submodule "neovim/config/nvim"]
+	path = neovim/config/nvim
+	url = https://github.com/farawayisland/my-kickstart.nvim.git
+[submodule "tex/mactex/config/texmf/tex/latex/scrbook-preset"]
+	path = tex/mactex/config/texmf/tex/latex/scrbook-preset
+	url = https://github.com/farawayisland/scrbook-preset.latex.git
+[submodule "tex/mactex/config/texmf/tex/assets"]
+	path = tex/mactex/config/texmf/tex/assets
+	url = https://github.com/farawayisland/assets.latex.git
+	branch = main

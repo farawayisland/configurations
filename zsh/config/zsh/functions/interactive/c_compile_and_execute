@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+# ~/.config/zsh/functions/interactive/c_compile_and_execute
+c_source_file="./$1"
+c_executable="${c_source_file:r}-c-executable"
+gcc -o "${c_executable}" "${c_source_file}"
+print -P "%F{green}"
+"${c_executable}"
