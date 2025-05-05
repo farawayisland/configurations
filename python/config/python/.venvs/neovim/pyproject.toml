@@ -1,0 +1,27 @@
+[project]
+name = "neovim"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "cairosvg>=2.8.2",
+    "ipykernel>=7.1.0",
+    "jupyter-client>=8.6.3",
+    "jupytext>=1.18.1",
+    "kaleido>=1.2.0",
+    "latexminted>=0.6.0",
+    "marimo>=0.18.0",
+    "matplotlib>=3.10.7",
+    "numpy>=2.3.5",
+    "openpyxl>=3.1.5",
+    "pandas>=2.3.3",
+    "plotly>=6.5.0",
+    "pnglatex>=1.1",
+    "pynvim>=0.6.0",
+    "pyperclip>=1.11.0",
+    "quarto>=0.1.0",
+]

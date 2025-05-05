@@ -1,0 +1,28 @@
+# ~/.config/zsh/functions/interactive/c_compile_into_static_library
+
+# Definition
+abbrev="$1"
+ver="$2"
+file_c_object_1="$3"
+
+dir_root="${file_c_object_1:h:h:h}"
+dir_build="$dir_root/build"
+dir_lib="$dir_build/lib"
+file_name="lib$abbrev.a"
+file_c_library="$dir_lib/$file_name.$ver"
+ver_major="${ver:r:r}"
+ver_minor="${ver:r:e}"
+ver_patch="${ver:e}"
+
+[ -d "$dir_lib" ] || mkdir -p "$dir_lib"
+
+libtool -o "$file_c_library" \
+        -static \
+        "$file_c_object_1" \
+        "${@:4}"
+
+cd "$dir_lib"
+ln -fns "$file_name.$ver" "$file_name.$ver_major.$ver_minor"
+ln -fns "$file_name.$ver_major.$ver_minor" "$file_name.$ver_major"
+ln -fns "$file_name.$ver_major" "$file_name"
+cd - > "/dev/null"

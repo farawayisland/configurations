@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+# ~/.config/zsh/functions/magick_crop_default
+## Dependencies:
+## ImageMagick | https://formulae.brew.sh/formula/imagemagick
+## Syntax:
+## magick_crop_default <input> <dimensions> <positive_x_offset> <positive_y_offset> <output> 
+magick_crop_default () {
+  if [ "$6" != "" ]
+  then
+    magick $1 -crop $2+$3+$4 -background $6 +repage $5
+  else
+    magick $1 -crop $2+$3+$4 +repage $5
+  fi
+}

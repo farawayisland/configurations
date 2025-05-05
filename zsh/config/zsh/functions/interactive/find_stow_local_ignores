@@ -1,0 +1,3 @@
+# ~/.config/zsh/functions/interactive/find_stow_local_ignores
+print -P %F{green}
+find ~/.config -type f -name .stow-local-ignore -print && find ~/Configurations -type f -name .stow-local-ignore -print && find ~/Projects -type f -name .stow-local-ignore -print

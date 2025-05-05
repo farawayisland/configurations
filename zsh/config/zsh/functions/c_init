@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+# ~/.config/zsh/functions/c_init
+
+# Definition
+c_init () {
+  "$ZSH_SCRIPTS_DIR/project-management/c/bin/c_init_script" "$@"
+
+  if [ -n "$1" ]; then
+    dir_root="$(realpath $1)"
+    cd "$dir_root"
+  fi
+}

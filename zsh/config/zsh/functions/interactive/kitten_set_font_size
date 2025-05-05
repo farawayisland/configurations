@@ -1,0 +1,15 @@
+# ~/.config/zsh/functions/interactive/kitten_set_font_size
+
+# Dependencies
+## kitty | https://formulae.brew.sh/cask/kitty
+
+# Definition
+if [ -z "$1" ]; then
+  ## "0" corresponds to `font_size` in "$KITTY_CONFIG_DIR/kitty.conf"
+  font_size_default="0"
+  font_size="$font_size_default"
+else
+  font_size="$1"
+fi
+
+kitten @ set-font-size "$font_size"

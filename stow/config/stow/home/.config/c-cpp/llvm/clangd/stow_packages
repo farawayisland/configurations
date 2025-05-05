@@ -1,0 +1,3 @@
+#!/usr/bin/env zsh
+# ~/.config/stow/home/.config/c-cpp/llvm/clangd/stow_packages
+$STOW_EXECUTABLE -d "$CLANGD_CONFIG_DIR" -t "$HOME/Library/Preferences/clangd"

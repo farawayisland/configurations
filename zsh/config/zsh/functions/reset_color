@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+# ~/.config/zsh/functions/reset_color
+reset_color () {
+  print -Pn "%F{reset}"
+}

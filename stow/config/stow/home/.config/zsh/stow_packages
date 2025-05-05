@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+# ~/.config/stow/home/.config/zsh/stow_packages
+cp "$STOW_CONFIG_ZSH_DIR/.stow-local-ignore" "$ZDOTDIR/.stow-local-ignore"
+$STOW_EXECUTABLE -d "$ZDOTDIR" -t "$HOME"

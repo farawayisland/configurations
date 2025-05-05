@@ -1,0 +1,25 @@
+#!/usr/bin/env zsh
+# ~/.config/zsh/functions/c_compile_into_object_file
+
+# Dependencies
+## gcc | https://formulae.brew.sh/formula/gcc
+
+# Definition
+c_compile_into_object_file () {
+  file_c_source="$1"
+
+  file_stem="${file_c_source:t:r}"
+  dir_root="${file_c_source:h:h}"
+  dir_build="$dir_root/build"
+  dir_obj="$dir_build/obj"
+  file_c_object="$dir_obj/$file_stem.o"
+
+  [ -d "$dir_obj" ] || mkdir -p "$dir_obj"
+
+  gcc-15 "${GCC_OPTS_C[@]}" \
+         -c \
+         -fPIC \
+         -o "$file_c_object" \
+         "${@:2}" \
+         "$file_c_source"
+}

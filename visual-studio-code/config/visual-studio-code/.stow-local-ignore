@@ -1,0 +1,9 @@
+# ~/.config/visual-studio-code/.stow-local-ignore
+# Everything except settings.json and snippets/
+\.DS_Store
+\.git
+\.gitignore
+globalStorage
+History
+sync
+workspaceStorage

@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+# ~/.config/zsh/functions/clear
+## Sources:
+## https://apple.stackexchange.com/a/318217
+## https://stackoverflow.com/a/26615036
+clear () {
+  printf '\e[2J\e[3J\e[1;1H'
+}

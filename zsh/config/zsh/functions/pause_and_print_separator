@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+# ~/.config/zsh/functions/pause_and_print_separator
+## Sources:
+## https://stackoverflow.com/a/51075278
+## https://stackoverflow.com/a/60087216
+## Prompt for a keypress to continue and print separator
+pause_and_print_separator () {
+  >/dev/tty printf '%s\n' "${*:-Press any key to continue... }" "$(printf '─%.0s' $(seq 1 $(tput cols)))"
+  read -krs
+}

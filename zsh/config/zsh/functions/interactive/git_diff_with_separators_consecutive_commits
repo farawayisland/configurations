@@ -1,0 +1,22 @@
+# ~/.config/zsh/functions/interactive/git_diff_with_separators_consecutive_commits
+
+# Dependencies
+## git | https://formulae.brew.sh/formula/git
+
+# Definition
+if [[ $# -eq 0 ]] ; then
+  printf '%s\n' 'No argument supplied' >&2
+  return 1
+fi
+
+printf '─%.0s' $(seq 1 $(tput cols))
+printf '\n'
+
+arg_last="${@: -1}"
+head_n="HEAD~$arg_last"
+head_n_plus_one="HEAD~$(($arg_last + 1))"
+
+git diff "${@[1,-2]}" "$head_n_plus_one" "$head_n"
+
+printf '─%.0s' $(seq 1 $(tput cols))
+printf '\n'

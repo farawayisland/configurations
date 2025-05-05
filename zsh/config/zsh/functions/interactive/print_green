@@ -1,0 +1,8 @@
+# ~/.config/zsh/functions/interactive/print_green
+## Source: https://stackoverflow.com/a/77879273
+if [ "$1" != "-n" ]
+then
+  print -P "%F{green}$@"
+else
+  print -Pn "%F{green}${@:2}"
+fi

@@ -1,0 +1,19 @@
+# ~/.config/zsh/functions/interactive/man_search_option
+
+# Dependencies
+## man | https://formulae.brew.sh/formula/man-db
+## Neovim | https://formulae.brew.sh/formula/neovim
+
+# Definition
+manpager_local="$MANPAGER"
+
+if [ -n "$2" ]; then
+  option="$2"
+  manpager_local="nvim --cmd 'set laststatus=0' \
+    -c 'set laststatus=0 nowrap statuscolumn=' \
+    -c 'Man!' \
+    -c \"sil! /\\\\C\\\\v(\\\\s+)@<=($option)(\\\\s{-})@=\" \
+    -c \"exe 'norm! ggn'\""
+fi
+
+man "-P $manpager_local" "$1"

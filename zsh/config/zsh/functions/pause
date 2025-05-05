@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+# ~/.config/zsh/functions/pause
+## Source: https://stackoverflow.com/a/51075278
+## Prompt for a keypress to continue
+pause () {
+  >/dev/tty printf '%s' "${*:-Press any key to continue... }"
+  read -krs
+  printf '\n'
+}
