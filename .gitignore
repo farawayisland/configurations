@@ -1,0 +1,12 @@
+*.bak
+default-file
+default-folder
+.DS_Store
+LICENSE
+.private
+services
+texlive
+texlive-2025-packages
+*.zcompdump*
+*.zsh_history
+*.zwc

@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+# ~/.zsh_functions/clear
+## Source: https://stackoverflow.com/a/26615036
+clear () {
+  printf '\33c\e[3J'
+}
