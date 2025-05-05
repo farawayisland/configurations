@@ -1,0 +1,14 @@
+# ~/.stow-global-ignore
+# Emacs
+.+~
+\#.*\#
+
+# Git
+\.git
+\.gitignore
+
+# Miscellaneous
+.*\.bak
+\.DS_Store
+^/LICENSE\..*
+^/README\..*

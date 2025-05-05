@@ -1,0 +1,5 @@
+# ~/.config/stow/home/.config/python/.venvs/neovim/.venv/bin/.stow-local-ignore
+\.DS_Store
+\.git
+\.gitignore
+python.*

@@ -1,0 +1,28 @@
+# ~/.config/zsh/functions/interactive/c_compile_into_shared_library
+c_library_abbrev="$1"
+c_library_name="lib$c_library_abbrev.so"
+c_library_ver="$2"
+c_object_file_1="$3"
+root_dir="${c_object_file_1:h:h:h}"
+build_dir="$root_dir/build"
+lib_dir="$build_dir/lib"
+c_library_ver_major="${c_library_ver:r:r}"
+c_library_ver_minor="${c_library_ver:r:e}"
+c_library_ver_patch="${c_library_ver:e}"
+c_library_file="$lib_dir/$c_library_name.$c_library_ver"
+[ -d "$lib_dir" ] || mkdir -p "$lib_dir"
+
+gcc-15 "-I$C_LIBRARIES_FLIBS_INCLUDE_DIR" \
+       "-I$C_LIBRARIES_FLIBS_INCLUDE_DIR/f-core" \
+       -Wall \
+       -Werror \
+       -Wextra \
+       -Wpedantic \
+       "-Wl,-install_name,$c_library_name.$c_library_ver_major" \
+       -g \
+       -o "$c_library_file" \
+       -shared \
+       -std=c23 \
+       "$c_object_file_1" \
+       "${@:4}" \
+       -lc

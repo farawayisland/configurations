@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+# ~/.config/stow/home/.config/visual-studio-code/stow_packages
+cp "$STOW_CONFIG_VSCODE_DIR/.stow-local-ignore" "$VSCODE_CONFIG_DIR/.stow-local-ignore"
+$STOW_EXECUTABLE -d "$VSCODE_CONFIG_DIR" -t "$HOME/Library/Application Support/Code/User"

@@ -1,0 +1,4 @@
+# ~/.config/zsh/functions/interactive/print_separator
+## Source: https://stackoverflow.com/a/60087216
+printf '─%.0s' $(seq 1 $(tput cols))
+printf '\n'

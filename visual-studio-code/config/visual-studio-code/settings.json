@@ -1,0 +1,151 @@
+// ~/'Library/Application Support/Code/User/settings.json'
+{
+  "[c]": {
+    "editor.defaultFormatter": "xaver.clang-format"
+  },
+  "[cpp]": {
+    "editor.defaultFormatter": "xaver.clang-format"
+  },
+  "C_Cpp.intelliSenseEngine": "disabled",
+  "clangd.arguments": ["--background-index", "-log=verbose", "-pretty"],
+  "clangd.path": "$CLANGD_EXECUTABLE",
+  "chat.commandCenter.enabled": false,
+  "code-runner.fileDirectoryAsCwd": true,
+  "editor.fontFamily": "'JetBrainsMono Nerd Font Mono', monospace",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 18,
+  "editor.fontWeight": "normal",
+  "editor.formatOnSave": true,
+  "editor.lineNumbers": "relative",
+  "editor.minimap.enabled": false,
+  "editor.stickyScroll.enabled": false,
+  "editor.tabSize": 2,
+  "editor.wordWrap": "on",
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "[java]": {
+    "editor.defaultFormatter": "redhat.java"
+  },
+  "java.format.settings.imports.onDemand": false,
+  "java.format.settings.imports.regexp": "^[a-z.]*",
+  "java.format.settings.profile": "GoogleStyle",
+  "java.format.settings.url": "https://raw.githubusercontent.com/google/styleguide/gh-pages/intellij-java-google-style.xml",
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "json.schemas": [],
+  "jupyter.kernels.trusted": [
+    "~/.config/python/.venvs/neovim/.venv/share/jupyter/kernels/python3/kernel.json",
+  ],
+  "latex-workshop.latex.recipe.default": "first",
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "lualatex",
+      "tools": [
+        "lualatex",
+        "clean-temporary-files" // optional
+      ]
+    },
+    {
+      "name": "lualatex ➞ bibtex ➞ lualatex (2x)",
+      "tools": ["lualatex", "bibtex", "lualatex", "lualatex"]
+    },
+    {
+      "name": "pdflatex",
+      "tools": ["pdflatex", "clean-temporary-files"]
+    },
+    {
+      "name": "pdflatex ➞ bibtex ➞ pdflatex (2x)",
+      "tools": ["pdflatex", "bibtex", "pdflatex", "pdflatex"]
+    },
+    {
+      "name": "xelatex",
+      "tools": ["xelatex", "clean-temporary-files"]
+    },
+    {
+      "name": "xelatex ➞ bibtex ➞ xelatex (2x)",
+      "tools": ["xelatex", "bibtex", "xelatex", "xelatex"]
+    }
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "name": "bibtex",
+      "command": "bibtex",
+      "args": ["%DOCFILE%"],
+      "env": {}
+    },
+    {
+      "name": "clean-temporary-files",
+      "command": "latexmk",
+      "args": ["-c"]
+    },
+    {
+      "name": "lualatex",
+      "command": "latexmk",
+      "args": [
+        "-lualatex",
+        "-file-line-error",
+        "-interaction=nonstopmode",
+        "-synctex=1",
+        "-outdir=%OUTDIR%",
+        "%DOC_EXT%"
+      ],
+      "env": {}
+    },
+    {
+      "name": "pdflatex",
+      "command": "latexmk",
+      "args": [
+        "-pdflatex",
+        "-file-line-error",
+        "-interaction=nonstopmode",
+        "-synctex=1",
+        "-outdir=%DIR%",
+        "%DOC_EXT%"
+      ],
+      "env": {}
+    },
+    {
+      "name": "xelatex",
+      "command": "latexmk",
+      "args": [
+        "-xelatex",
+        "-file-line-error",
+        "-interaction=nonstopmode",
+        "-synctex=1",
+        "-outdir=%DIR%",
+        "%DOC_EXT%"
+      ],
+      "env": {}
+    }
+  ],
+  "latex-workshop.view.pdf.external.viewer.command": "sioyek",
+  "notebook.defaultFormatter": "charliermarsh.ruff",
+  "notebook.formatOnSave.enabled": true,
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.tabSize": 4
+  },
+  "python.analysis.typeCheckingMode": "strict",
+  "python.defaultInterpreterPath": "/Users/Nyx/.local/share/uv/python/cpython-3.14.0-macos-aarch64-none/bin/python3.14",
+  "ruff.lineLength": 80,
+  "ruff.nativeServer": true,
+  "security.workspace.trust.untrustedFiles": "open",
+  "settingsSync.ignoredSettings": [],
+  "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font Mono', monospace",
+  "terminal.integrated.fontLigatures": true,
+  "terminal.integrated.fontSize": 18,
+  "terminal.integrated.fontWeight": "normal",
+  "terminal.integrated.fontWeightBold": "bold",
+  "terminal.integrated.profiles.osx": {
+    "zsh": {
+      "args": ["-i", "-l"],
+      "path": "/opt/homebrew/opt/zsh/bin/zsh"
+    }
+  },
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.settings.applyToAllProfiles": []
+}

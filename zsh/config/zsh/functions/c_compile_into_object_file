@@ -1,0 +1,25 @@
+#!/usr/bin/env zsh
+# ~/.config/zsh/functions/c_compile_into_object_file
+c_compile_into_object_file () {
+  c_source_file="$1"
+  filename_without_ext="${c_source_file:t:r}"
+  root_dir="${c_source_file:h:h}"
+  build_dir="$root_dir/build"
+  obj_dir="$build_dir/obj"
+  c_object_file="$obj_dir/$filename_without_ext.o"
+  [ -d "$obj_dir" ] || mkdir -p "$obj_dir"
+
+  gcc-15 "-I$C_LIBRARIES_FLIBS_INCLUDE_DIR" \
+         "-I$C_LIBRARIES_FLIBS_INCLUDE_DIR/f-core" \
+         -Wall \
+         -Werror \
+         -Wextra \
+         -Wpedantic \
+         -c \
+         -fPIC \
+         -g \
+         -o "$c_object_file" \
+         -std=c23 \
+         "${@:2}" \
+         "$c_source_file"
+}

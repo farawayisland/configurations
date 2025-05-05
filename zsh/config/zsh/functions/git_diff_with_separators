@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+# ~/.config/zsh/functions/git_diff_with_separators
+git_diff_with_separators () {
+  printf '─%.0s' $(seq 1 $(tput cols))
+  printf '\n'
+  git diff "$@"
+  printf '─%.0s' $(seq 1 $(tput cols))
+  printf '\n'
+}

@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+# ~/.config/zsh/functions/py_interpret
+## Dependencies:
+## uv | https://formulae.brew.sh/formula/uv
+py_interpret () {
+  print -P "%F{green}"
+  uv run "$@"
+  printf "\n"
+}

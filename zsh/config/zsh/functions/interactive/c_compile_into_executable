@@ -1,0 +1,20 @@
+# ~/.config/zsh/functions/interactive/c_compile_into_executable
+c_source_file="$1"
+filename_without_ext="${c_source_file:t:r}"
+root_dir="${c_source_file:h:h}"
+build_dir="$root_dir/build"
+bin_dir="$build_dir/bin"
+c_executable="$bin_dir/$filename_without_ext-c-executable"
+[ -d "$bin_dir" ] || mkdir -p "$bin_dir"
+
+gcc-15 "-I$C_LIBRARIES_FLIBS_INCLUDE_DIR" \
+       "-I$C_LIBRARIES_FLIBS_INCLUDE_DIR/f-core" \
+       -Wall \
+       -Werror \
+       -Wextra \
+       -Wpedantic \
+       -g \
+       -o "$c_executable" \
+       -std=c23 \
+       "${@:2}" \
+       "$c_source_file"

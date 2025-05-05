@@ -1,0 +1,25 @@
+# ~/.config/zsh/functions/interactive/nvim_switch_configuration
+## Dependencies:
+## AWK | https://formulae.brew.sh/formula/gawk
+## fd | https://formulae.brew.sh/formula/fd
+## fzf | https://formulae.brew.sh/formula/fzf
+## Neovim | https://formulae.brew.sh/formula/neovim
+## Sources:
+## https://gist.github.com/elijahmanor/b279553c0132bfad7eae23e34ceb593b?permalink_comment_id=4631960#gistcomment-4631960
+## https://gist.github.com/elijahmanor/b279553c0132bfad7eae23e34ceb593b?permalink_comment_id=5246114#gistcomment-5246114
+## https://gist.github.com/elijahmanor/b279553c0132bfad7eae23e34ceb593b?permalink_comment_id=5866728#gistcomment-5866728
+config="$(
+  fd -d 3 -L --min-depth 2 --regex "init\.(lua|vim)" -p "${XDG_CONFIG_HOME:-$HOME/.config}" \
+  | awk -F"${XDG_CONFIG_HOME:-$HOME/.config}/" '{sub(/nvims\//, ""); sub(/nvim/, "default"); sub(/\/init.*/, ""); print $NF}' \
+  | fzf --border --exit-0 --height=~50% --layout=reverse --prompt ' Neovim configuration switcher  ')"
+if [[ -z $config ]]; then
+  printf "%s\n" "No configuration selected."
+  return 0
+elif [[ $config == "default" ]]; then
+  config=""
+else
+  config="nvims/$config"
+  alias nv="NVIM_APPNAME=$config nvim"
+  alias nvt="NVIM_APPNAME=$config nvim -c \"lua require('persistence').load()\" -c terminal -c startinsert -c \"silent! ?\v(^On branch )@<=(.{-})($)@=\" -c nohlsearch"
+fi
+NVIM_APPNAME=$config nvim "$@"

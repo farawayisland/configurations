@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+# ~/.config/zsh/functions/diff_with_separators
+diff_with_separators () {
+  printf '─%.0s' $(seq 1 $(tput cols))
+  printf '\n'
+  diff --color -u "$@"
+  printf '─%.0s' $(seq 1 $(tput cols))
+  printf '\n'
+}

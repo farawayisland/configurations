@@ -1,0 +1,23 @@
+#!/usr/bin/env zsh
+# ~/.config/zsh/functions/ex_in_silent_mode
+# Dependencies:
+## Neovim | https://formulae.brew.sh/formula/neovim
+## Vim | https://formulae.brew.sh/formula/vim
+# Source: https://vi.stackexchange.com/a/6247
+ex_in_silent_mode () {
+  arg_count="$#"
+  arg_last="${@: -1}"
+  args_before_last="${@:1:-1}"
+  file=$arg_last
+
+  if [ "$1" != "-n" ]; then
+    ex_commands=$args_before_last
+
+    ex -sc "$ex_commands | x" "$file"
+  elif [ $arg_count -ge 2 ]; then
+    args_after_first_before_last="${@:2:-1}"
+    ex_commands=$args_after_first_before_last
+
+    nvim -esc "$ex_commands | x" "$file"
+  fi
+}

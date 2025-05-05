@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+# ~/.config/zsh/functions/sevenzip_default
+## Dependencies:
+## 7-Zip | https://formulae.brew.sh/formula/sevenzip
+sevenzip_default () {
+  cd "$1"
+  7zz a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=256m -ms=on "$1"
+  mv "$1.7z" ..
+}

@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+# ~/.config/zsh/functions/copy_bundle_id
+## Source: https://stackoverflow.com/a/39464824
+copy_bundle_id () {
+  osascript -e "id of app \"$1\""
+  printf '%s' $(osascript -e "id of app \"$1\"") | pbcopy
+}

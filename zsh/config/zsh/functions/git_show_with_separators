@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+# ~/.config/zsh/functions/git_show_with_separators
+git_show_with_separators () {
+  printf '─%.0s' $(seq 1 $(tput cols))
+  printf '\n'
+  git show "$@"
+  printf '─%.0s' $(seq 1 $(tput cols))
+  printf '\n'
+}

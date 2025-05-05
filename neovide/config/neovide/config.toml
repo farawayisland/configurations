@@ -1,0 +1,22 @@
+# ~/.config/neovide/config.toml
+## https://neovide.dev/command-line-reference.html#frame
+frame = "buttonless"
+
+[font]
+size = 16
+
+[[font.normal]]
+family = "JetBrainsMono Nerd Font Mono"
+style = "SemiBold"
+
+[[font.bold]]
+family = "JetBrainsMono Nerd Font Mono"
+style = "Bold"
+
+[[font.italic]]
+family = "JetBrainsMono Nerd Font Mono"
+style = "SemiBold Italic"
+
+[[font.bold_italic]]
+family = "JetBrainsMono Nerd Font Mono"
+style = "Bold Italic"

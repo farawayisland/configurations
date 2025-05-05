@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+# ~/.config/stow/home/.config/python/.venvs/neovim/.venv/bin/stow_packages
+cp "$STOW_CONFIG_NVIM_VENV_BINARIES_DIR/.stow-local-ignore" "$NVIM_VENV_BINARIES_DIR/.stow-local-ignore"
+$STOW_EXECUTABLE -d "$NVIM_VENV_BINARIES_DIR" -t "$TEX_BINARIES_DIR" .

@@ -1,0 +1,24 @@
+#!/usr/bin/env zsh
+# ~/.config/zsh/functions/c_compile_and_run
+c_compile_and_run () {
+  c_source_file="$1"
+  filename_without_ext="${c_source_file:t:r}"
+  root_dir="${c_source_file:h}"
+  c_executable="$root_dir/$filename_without_ext-c-executable"
+
+  gcc-15 "-I$C_LIBRARIES_FLIBS_INCLUDE_DIR" \
+         "-I$C_LIBRARIES_FLIBS_INCLUDE_DIR/f-core" \
+         -Wall \
+         -Werror \
+         -Wextra \
+         -Wpedantic \
+         -g \
+         -o "$c_executable" \
+         -std=c23 \
+         "${@:2}" \
+         "$c_source_file"
+
+  print -P "%F{green}"
+  "$c_executable"
+  printf "\n"
+}

@@ -1,0 +1,11 @@
+# ~/.config/zsh/functions/interactive/magick_extent_default
+## Dependencies:
+## ImageMagick | https://formulae.brew.sh/formula/imagemagick
+## Syntax:
+## magick_extent_default <input> <dimensions> <output> [<background>:black]
+if [ "$4" != "" ]
+then
+  magick $1 -colorspace RGB -units PixelsPerInch -density 300 -quality 100 -background $4 -flatten -gravity center -extent $2 -colorspace sRGB $3
+else
+  magick $1 -colorspace RGB -units PixelsPerInch -density 300 -quality 100 -background $(magick $1 -colorspace RGB -format "%[pixel:p{0,0}]" info:) -flatten -gravity center -extent $2 -colorspace sRGB $3
+fi
