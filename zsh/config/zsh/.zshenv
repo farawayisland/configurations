@@ -26,10 +26,10 @@ export TYPESETTING="$PROJECTS/Typesetting"
 
 ## Homebrew
 export HOMEBREW_PREFIX="/opt/homebrew"
-[ -d "$HOMEBREW_PREFIX" ] || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 ### Executable
 export BREW_EXECUTABLE="$HOMEBREW_PREFIX/bin/brew"
+[ -f "$BREW_EXECUTABLE" ] || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 ## Zsh
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
@@ -58,6 +58,31 @@ zstyle ':completion:*' cache-path "$ZSH_CACHE_DIR/zcompcache"
 ### Themes
 export ZSH_THEMES_DIR="$ZDOTDIR/themes"
 [ -d "$ZSH_THEMES_DIR" ] || mkdir -p "$ZSH_THEMES_DIR"
+
+## C/C++
+export C_CPP_CONFIG_DIR="$XDG_CONFIG_HOME/c-cpp"
+[ -d "$C_CPP_CONFIG_DIR" ] || mkdir -p "$C_CPP_CONFIG_DIR"
+
+### GNU Compiler Collection (GCC)
+export GCC_CONFIG_DIR="$C_CPP_CONFIG_DIR/gcc"
+export GCC_EXECUTABLE="$HOMEBREW_PREFIX/bin/gcc-15"
+[ -d "$GCC_CONFIG_DIR" ] || mkdir -p "$GCC_CONFIG_DIR"
+[ -f "$GCC_EXECUTABLE" ] || "$BREW_EXECUTABLE" install gcc
+
+### LLVM
+export LLVM_CONFIG_DIR="$C_CPP_CONFIG_DIR/llvm"
+[ -d "$LLVM_CONFIG_DIR" ] || mkdir -p "$LLVM_CONFIG_DIR"
+
+#### Clang
+export CLANG_CONFIG_DIR="$LLVM_CONFIG_DIR/clang"
+export CLANG_EXECUTABLE="$HOMEBREW_PREFIX/opt/llvm/bin/clang"
+[ -d "$CLANG_CONFIG_DIR" ] || mkdir -p "$CLANG_CONFIG_DIR"
+[ -f "$CLANG_EXECUTABLE" ] || "$BREW_EXECUTABLE" install llvm
+
+#### clangd
+export CLANGD_CONFIG_DIR="$LLVM_CONFIG_DIR/clangd"
+export CLANGD_EXECUTABLE="$HOMEBREW_PREFIX/opt/llvm/bin/clangd"
+[ -d "$CLANGD_CONFIG_DIR" ] || mkdir -p "$CLANGD_CONFIG_DIR"
 
 ## Emacs
 export EMACS_CONFIG_DIR="$XDG_CONFIG_HOME/emacs"
@@ -106,16 +131,47 @@ export UV_PACKAGES_DIR="$XDG_DATA_HOME/uv"
 export UV_PYTHON_DIR="$UV_PACKAGES_DIR/python"
 [ -d "$UV_PYTHON_DIR" ] || "$UV_EXECUTABLE" python install --default
 
-### pyenv, pyenv-virtualenv and pyenv-virtualenvwrapper
-# export PYENV_ROOT="$PYTHON_CONFIG_DIR/.pyenv"
-# [ -d "$PYENV_ROOT" ] || mkdir -p "$PYENV_ROOT"
+#### venv
+export VENV_HOME="$PYTHON_CONFIG_DIR/.venvs"
+[ -d "$VENV_HOME" ] || mkdir -p "$VENV_HOME"
 
-### virtualenv and virtualenvwrapper
-# export VIRTUALENVWRAPPER_PYTHON="$HOMEBREW_PREFIX/bin/python3"
-# export VIRTUALENVWRAPPER_VIRTUALENV="$HOMEBREW_PREFIX/bin/virtualenv"
-# export WORKON_HOME="$PYTHON_CONFIG_DIR/.virtualenvs"
-# [ -d "$WORKON_HOME" ] || mkdir -p "$WORKON_HOME"
-# [ -f "$HOMEBREW_PREFIX/bin/virtualenvwrapper.sh" ] && . "$HOMEBREW_PREFIX/bin/virtualenvwrapper.sh"
+#### # Neovim
+export NVIM_VENV_DIR="$VENV_HOME/neovim"
+[ -d "$NVIM_VENV_DIR" ] || ("$UV_EXECUTABLE" init "$NVIM_VENV_DIR" && "$UV_EXECUTABLE" add --dev --project "$NVIM_VENV_DIR" cairosvg ipykernel jupyter jupyter_client jupytext kaleido marimo matplotlib numpy pandas plotly pnglatex pynvim pyperclip quarto)
+
+## GNU Stow
+export STOW_CONFIG_DIR="$XDG_CONFIG_HOME/stow"
+export STOW_EXECUTABLE="$HOMEBREW_PREFIX/bin/stow"
+[ -d "$STOW_CONFIG_DIR" ] || mkdir -p "$STOW_CONFIG_DIR"
+[ -f "$STOW_EXECUTABLE" ] || "$BREW_EXECUTABLE" install stow
+
+### Home
+export STOW_CONFIG_HOME="$STOW_CONFIG_DIR/home/.config"
+[ -d "$STOW_CONFIG_HOME" ] || mkdir -p "$STOW_CONFIG_HOME"
+
+#### C/C++
+export STOW_CONFIG_C_CPP_DIR="$STOW_CONFIG_HOME/c-cpp"
+[ -d "$STOW_CONFIG_C_CPP_DIR" ] || mkdir -p "$STOW_CONFIG_C_CPP_DIR"
+
+#### # LLVM
+export STOW_CONFIG_LLVM_DIR="$STOW_CONFIG_C_CPP_DIR/llvm"
+[ -d "$STOW_CONFIG_LLVM_DIR" ] || mkdir -p "$STOW_CONFIG_LLVM_DIR"
+
+#### ## Clang
+export STOW_CONFIG_CLANG_DIR="$STOW_CONFIG_LLVM_DIR/clang"
+[ -d "$STOW_CONFIG_CLANG_DIR" ] || mkdir -p "$STOW_CONFIG_CLANG_DIR"
+
+#### ## clangd
+export STOW_CONFIG_CLANGD_DIR="$STOW_CONFIG_LLVM_DIR/clangd"
+[ -d "$STOW_CONFIG_CLANGD_DIR" ] || mkdir -p "$STOW_CONFIG_CLANGD_DIR"
+
+#### Visual Studio Code
+export STOW_CONFIG_VSCODE_DIR="$STOW_CONFIG_HOME/visual-studio-code"
+[ -d "$STOW_CONFIG_VSCODE_DIR" ] || mkdir -p "$STOW_CONFIG_VSCODE_DIR"
+
+#### Zsh
+export STOW_CONFIG_ZSH_DIR="$STOW_CONFIG_HOME/zsh"
+[ -d "$STOW_CONFIG_ZSH_DIR" ] || mkdir -p "$STOW_CONFIG_ZSH_DIR"
 
 ## TeX
 export TEXMFHOME="$(printf $(/Library/TeX/texbin/kpsewhich -var-value TEXMFHOME))"
@@ -136,6 +192,12 @@ export LATEX_SCRBOOK_PRESET="$LATEX_PACKAGES/scrbook-preset" # Git-tracked
 export LATEX_STANDALONE_PRESET="$LATEX_PACKAGES/standalone-preset" # Git-tracked
 [ -d "$LATEX_SCRBOOK_PRESET" ] || mkdir -p "$LATEX_SCRBOOK_PRESET"
 [ -d "$LATEX_STANDALONE_PRESET" ] || mkdir -p "$LATEX_STANDALONE_PRESET"
+
+## Visual Studio Code
+export VSCODE_CONFIG_DIR="$XDG_CONFIG_HOME/visual-studio-code"
+export VSCODE_EXECUTABLE="$HOMEBREW_PREFIX/bin/code"
+[ -d "$VSCODE_CONFIG_DIR" ] || mkdir -p "$VSCODE_CONFIG_DIR"
+[ -f "$VSCODE_EXECUTABLE" ] || "$BREW_EXECUTABLE" install --cask visual-studio-code
 
 ## Software
 export SOFTWARE="$HOME/Software" # Git-tracked

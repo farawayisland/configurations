@@ -86,6 +86,12 @@ bindkey '^[[Z' complete-word      # Shift + Tab
 bindkey '\t\t' autosuggest-accept # Tab + Tab
 
 # Aliases
+## anv | Activate Neovim's Python virtual environment
+alias anv="source $NVIM_VENV_DIR/.venv/bin/activate"
+
+## av | Activate current project's Python virtual environment
+alias av='source .venv/bin/activate'
+
 ## bcb | Create Brewfile
 alias bcb="$ZSH_SCRIPTS_DIR/package-management/homebrew/bin/create_brewfile"
 
@@ -117,6 +123,9 @@ alias cpp='cpp-15'
 
 ## diffcu | GNU diff with additions colored green and removals colored red
 alias diffcu='diff --color -u'
+
+## dv | Deactivate currently-active Python virtual environment
+alias dv='deactivate'
 
 ## ecxl | Show current values of $COLUMNS and $LINES
 alias ecxl='echo "\$COLUMNS×\$LINES: $COLUMNS×$LINES"'
@@ -283,6 +292,9 @@ alias java17='unset JAVA_HOME; export JAVA_HOME=/Library/Java/JavaVirtualMachine
 ## java21 | Homebrew-Installed Java 21 (Temurin)
 alias java21='unset JAVA_HOME; export JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home; java -version'
 
+## jkl | List installed Jupyter kernels
+alias jkl='jupyter kernelspec list'
+
 ## kas | Kill all Automator services
 alias kas='pkill -9 com.apple.automator.runner'
 
@@ -334,6 +346,9 @@ alias nvimdiff='nvim -d'
 ## nvti | Run Neovim session associated with current directory, enter terminal mode, and silently search backward for branch returned by 'git status'
 alias nvti='nvim -c "lua require('\''persistence'\'').load()" -c terminal -c startinsert -c "silent! ?\v(^On branch )@<=(.{-})($)@=" -c nohlsearch'
 
+## py | Run Python
+alias py='python'
+
 ## refresh | Refresh Finder
 alias refresh="osascript -e 'tell application \"Finder\" to tell front window to update every item'"
 
@@ -342,6 +357,9 @@ alias stlmu='sudo tlmgr update --self && sudo tlmgr update --all'
 
 ## tdlf | Return LaTeX definition of \fmtversion
 alias tdlf='texdef -t latex fmtversion'
+
+## uvj | Run Jupyter Lab
+alias uvj='uv run jupyter lab'
 
 ## which | Homebrew-Installed GNU which
 alias which='gwhich'
