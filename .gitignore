@@ -4,9 +4,16 @@ default-folder
 .DS_Store
 .private
 LICENSE
+**/rustup/downloads/
+**/rustup/tmp/
+**/rustup/toolchains/
+**/rustup/update-hashes/
 services
 texlive
 texlive-2025-packages
+**/.venvs/**/.git/
+**/.venvs/**/.gitignore
+**/.venvs/**/.venv/
 *.zcompdump*
 *.zshenv_secondary
 *.zsh_history
