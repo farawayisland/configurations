@@ -208,7 +208,7 @@ export VENV_HOME="$PYTHON_CONFIG_DIR/.venvs"
 
 #### # Neovim
 export NVIM_VENV_DIR="$VENV_HOME/neovim"
-[ -d "$NVIM_VENV_DIR" ] || ("$UV_EXECUTABLE" init "$NVIM_VENV_DIR" && "$UV_EXECUTABLE" add --dev --project "$NVIM_VENV_DIR" cairosvg ipykernel ipynbname jupyter_client jupytext kagglehub kaleido latexminted marimo matplotlib numpy openpyxl pandas plotly pnglatex pynvim pyperclip quarto scikit-learn seaborn)
+[ -d "$NVIM_VENV_DIR" ] || ("$UV_EXECUTABLE" init "$NVIM_VENV_DIR" && "$UV_EXECUTABLE" add --dev --project "$NVIM_VENV_DIR" cairosvg ipykernel ipynbname jupyter_client jupytext kagglehub kaleido latexminted marimo matplotlib numpy openpyxl pandas plotly pnglatex polars pynvim pyperclip quarto scikit-learn seaborn)
 
 #### ## Binaries
 export NVIM_VENV_BINARIES_DIR="$NVIM_VENV_DIR/.venv/bin"
@@ -314,6 +314,13 @@ export VSCODE_CONFIG_DIR="$XDG_CONFIG_HOME/visual-studio-code"
 export VSCODE_EXECUTABLE="$HOMEBREW_BINARIES_DIR/code"
 [ -d "$VSCODE_CONFIG_DIR" ] || mkdir -p "$VSCODE_CONFIG_DIR"
 [ -f "$VSCODE_EXECUTABLE" ] || "$HOMEBREW_EXECUTABLE" install --cask visual-studio-code
+
+## vivid
+export VIVID_EXECUTABLE="$HOMEBREW_BINARIES_DIR/vivid"
+[ -f "$VIVID_EXECUTABLE" ] || "$HOMEBREW_EXECUTABLE" install vivid
+
+### LS_COLORS
+export LS_COLORS="$($VIVID_EXECUTABLE generate catppuccin-mocha)"
 
 ## Downloads
 export DOWNLOADS="$HOME/Downloads"

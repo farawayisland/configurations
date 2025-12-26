@@ -1,3 +1,5 @@
 # ~/.config/zsh/functions/interactive/clear
-## Source: https://stackoverflow.com/a/26615036
-printf '\33c\e[3J'
+## Sources:
+## https://apple.stackexchange.com/a/318217
+## https://stackoverflow.com/a/26615036
+printf '\e[2J\e[3J\e[1;1H'

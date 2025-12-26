@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 # ~/.config/zsh/.zshrc
 # Clear screen
-# printf '\33c\e[3J'
+# printf '\e[2J\e[3J\e[1;1H'
 
 # Restrict checking zcompdump to once a day
 # autoload -Uz compinit
@@ -12,6 +12,10 @@
 # else
 #   compinit -C
 # fi
+
+# Colors
+autoload -Uz colors
+colors
 
 # Environment variables
 ## EDITOR
@@ -131,8 +135,13 @@ alias clc='fc -ln -1 | awk '\''{$1=$1}1'\'' ORS='\'''\'' | pbcopy'
 alias clo='echo !! | pbcopy'
 
 ## cls | Clear screen
-### Source: https://stackoverflow.com/a/29876027
-alias cls='printf "\33c\e[3J"'
+## Sources:
+## https://apple.stackexchange.com/a/318217
+## https://stackoverflow.com/a/26615036
+alias cls='printf "\e[2J\e[3J\e[1;1H"'
+
+## cres | Reset terminal emulator's foreground color
+alias cres='reset_color'
 
 ## cpp | Homebrew-Installed GNU Compiler Collection's cpp
 alias cpp='cpp-15'
@@ -152,8 +161,11 @@ alias ecxl='echo "\$COLUMNS×\$LINES: $COLUMNS×$LINES"'
 ## es | Silently run Vim's or Neovim's Ex command then exit
 alias es='ex_in_silent_mode'
 
-## fdeldsstore | Recursively find and delete '.DS_Store' files in current directory
-alias fdeldsstore="find . -name '.DS_Store' -print -type f -delete"
+## fdelce | Recursively find and delete '*-c-executable*' files in current directory
+alias fdelce="find . -name '*-c-executable*' -print -type f -delete"
+
+## fdelds | Recursively find and delete '.DS_Store' files in current directory
+alias fdelds="find . -name '.DS_Store' -print -type f -delete"
 
 ## g++ | Homebrew-Installed GNU Compiler Collection's g++
 alias g++='g++-15'
@@ -205,6 +217,9 @@ alias gdomh='git_diff_with_separators origin/main HEAD'
 
 ## gdoph | Show changes between origin/private and HEAD commits
 alias gdoph='git_diff_with_separators origin/private HEAD'
+
+## gds | Show changed files between Git commits
+alias gds='git_diff_with_separators --stat'
 
 ## gdshh | Show changed files between last two Git commits
 alias gdshh='git_diff_with_separators --stat HEAD^ HEAD'
@@ -266,6 +281,12 @@ alias gres='git reset'
 ## gresto | Restore current Git working tree files
 alias gresto='git restore'
 
+## grestos | Unstage current Git working tree files
+alias grestos='git restore -S'
+
+## grestosw | Unstage and revert current Git working tree files to HEAD
+alias grestosw='git restore -S -s HEAD -W'
+
 ## grbi | Reapply Git commits on top of another base tip
 alias grbi='git rebase -i'
 
@@ -317,6 +338,9 @@ alias gswp='git switch private'
 ## guisw | Ignore a previously Git-tracked file from the index
 alias guisw='git update-index --skip-worktree'
 
+## help | Collection of community-maintained help pages for command-line tools
+alias help='tldr'
+
 ## isodate | Return current date and time with format similar to ISO 8601 but with additional spaces
 alias isodate='echo -e "\e[38;2;166;227;161m$(date +%F'\''  '\''T%H:%M:%S'\''  '\''+07:00)"'
 
@@ -340,6 +364,9 @@ alias kas='pkill -9 com.apple.automator.runner'
 
 ## kitren | Rename current kitty tab and window
 alias kitren='kitten_rename'
+
+## la | List almost all files in current directory (except for `.` and `..`) with `lsd`
+alias la='lsd -A'
 
 ## latexdelnewline | Delete newline after \begin{document} in a LaTeX file
 alias latexdelnewline="sed -i -z 's;\\n\\\\begin{document}\\n\\n;\\n\\\\begin{document}\\n;'"
@@ -367,6 +394,12 @@ alias lmkpdf='latexmk -pdflatex -file-line-error -interaction=nonstopmode -synct
 
 ## lmkxe | Recipe for compiling XeLaTeX documents with latexmk
 alias lmkxe='latexmk -xelatex -file-line-error -interaction=nonstopmode -synctex=1'
+
+## ls | Use `lsd` instead of `ls`
+alias ls='lsd'
+
+## lt | Recurse into directories and present the result as a tree with `lsd`
+alias lt='lsd --tree'
 
 ## mgcd | Crop image
 alias mgcd='magick_crop_default'
@@ -523,6 +556,9 @@ autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/print_separator"
 
 ## py_interpret | Run Python interpreter
 autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/py_interpret"
+
+## reset_color | Reset terminal emulator's foreground color
+autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/reset_color"
 
 # Export environment to GNU Parallel
 . "$HOMEBREW_BINARIES_DIR/env_parallel.zsh"

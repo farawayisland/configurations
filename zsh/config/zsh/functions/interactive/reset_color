@@ -1,0 +1,2 @@
+# ~/.config/zsh/functions/interactive/reset_color
+print -Pn "%F{reset}"
