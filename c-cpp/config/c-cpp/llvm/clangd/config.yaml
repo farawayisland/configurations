@@ -1,11 +1,18 @@
 # ~/Library/Preferences/clangd/config.yaml
 If:
-  PathMatch: .*\.c
+  PathMatch: [.*\.c, .*\.h]
 CompileFlags:
   Compiler: gcc-15
   Add:
     - -Wall
+    - -Werror
     - -Wextra
     - -Wpedantic
     - -g
+
+If:
+  PathMatch: [.*\.c]
+CompileFlags:
+  Compiler: gcc-15
+  Add:
     - -std=c23
