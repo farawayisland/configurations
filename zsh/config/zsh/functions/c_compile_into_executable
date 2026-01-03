@@ -1,23 +1,23 @@
 #!/usr/bin/env zsh
 # ~/.config/zsh/functions/c_compile_into_executable
-c_compile_into_executable () {
-  c_source_file="$1"
-  filename_without_ext="${c_source_file:t:r}"
-  root_dir="${c_source_file:h:h}"
-  build_dir="$root_dir/build"
-  bin_dir="$build_dir/bin"
-  c_executable="$bin_dir/$filename_without_ext-c-executable"
-  [ -d "$bin_dir" ] || mkdir -p "$bin_dir"
 
-  gcc-15 "-I$C_LIBRARIES_FLIBS_INCLUDE_DIR" \
-         "-I$C_LIBRARIES_FLIBS_INCLUDE_DIR/f-core" \
-         -Wall \
-         -Werror \
-         -Wextra \
-         -Wpedantic \
-         -g \
-         -o "$c_executable" \
-         -std=c23 \
-         "${@:2}" \
-         "$c_source_file"
+# Dependencies
+## gcc | https://formulae.brew.sh/formula/gcc
+
+# Definition
+c_compile_into_executable () {
+  file_c_object_or_source_1="$1"
+
+  dir_root="${file_c_object_or_source_1:h:h}"
+  dir_build="$dir_root/build"
+  dir_bin="$dir_build/bin"
+  file_stem="${file_c_object_or_source_1:t:r}"
+  file_c_executable="$dir_bin/$file_stem-c-executable"
+
+  [ -d "$dir_bin" ] || mkdir -p "$dir_bin"
+
+  gcc-15 "${GCC_OPTS_C[@]}" \
+         -o "$file_c_executable" \
+         "$file_c_object_or_source_1" \
+         "${@:2}"
 }

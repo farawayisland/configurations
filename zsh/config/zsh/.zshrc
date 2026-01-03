@@ -3,63 +3,42 @@
 # Clear screen
 # printf '\e[2J\e[3J\e[1;1H'
 
-# Restrict checking zcompdump to once a day
-# autoload -Uz compinit
-# compinit -d "$ZSH_CACHE_DIR/zcompdump-$ZSH_VERSION"
-# if [[ -n "$ZSH_CACHE_DIR/zcompdump-$ZSH_VERSION(#qN.mh+24)" ]]
-#   then
-#     compinit
-# else
-#   compinit -C
-# fi
-
 # Colors
-autoload -Uz colors
-colors
+# autoload -Uz colors
+# colors
 
 # Environment variables
-## EDITOR
-export EDITOR="$NVIM_EXECUTABLE"
-
-## HOMEBREW_FORCE_BREWED_CURL
-export HOMEBREW_FORCE_BREWED_CURL=1
-
-## MANPAGER, MANWIDTH
-### Source: https://old.reddit.com/r/neovim/comments/1k1k9bz/use_neovim_as_the_default_man_page_viewer/mnya9kr
-export MANPAGER="$NVIM_EXECUTABLE --cmd 'set laststatus=0 ' +'set statuscolumn= nowrap laststatus=0' +Man\!"
-export MANWIDTH=999
-
-## PAGER
-export PAGER="$LESS_EXECUTABLE"
-
 ## PATH
 . "$CARGO_HOME/env"
+path=("$BINUTILS_BINARIES_DIR" $path)
 path=("$CARGO_BINARIES_DIR" $path)
+path=("$COREUTILS_BINARIES_DIR" $path)
+path=("$FINDUTILS_BINARIES_DIR" $path)
 path=("$HOMEBREW_BINARIES_DIR" $path)
 path=("$HOMEBREW_OPTIONAL_DIR/bash/bin" $path)
-path=("$HOMEBREW_OPTIONAL_DIR/binutils/bin" $path)
-path=("$HOMEBREW_OPTIONAL_DIR/coreutils/libexec/gnubin" $path)
 path=("$HOMEBREW_OPTIONAL_DIR/curl/bin" $path)
-path=("$HOMEBREW_OPTIONAL_DIR/findutils/libexec/gnubin" $path)
 path=("$HOMEBREW_OPTIONAL_DIR/gawk/libexec/gnubin" $path)
 path=("$HOMEBREW_OPTIONAL_DIR/git/bin" $path)
 path=("$HOMEBREW_OPTIONAL_DIR/gnu-sed/libexec/gnubin" $path)
 path=("$HOMEBREW_OPTIONAL_DIR/gnu-tar/libexec/gnubin" $path)
+path=("$HOMEBREW_OPTIONAL_DIR/gnu-time/libexec/gnubin" $path)
 path=("$HOMEBREW_OPTIONAL_DIR/gnu-which/libexec/gnubin" $path)
 path=("$HOMEBREW_OPTIONAL_DIR/grep/libexec/gnubin" $path)
 path=("$HOMEBREW_OPTIONAL_DIR/gzip/bin" $path)
 path=("$HOMEBREW_OPTIONAL_DIR/llvm/bin" $path)
 path=("$HOMEBREW_OPTIONAL_DIR/make/libexec/gnubin" $path)
+path=("$HOMEBREW_OPTIONAL_DIR/man-db/libexec/bin" $path)
 path=("$HOMEBREW_OPTIONAL_DIR/perl/bin" $path)
 path=("$HOMEBREW_OPTIONAL_DIR/unzip/bin" $path)
 path=("$HOMEBREW_OPTIONAL_DIR/vim/bin" $path)
 path=("$HOMEBREW_OPTIONAL_DIR/zip/bin" $path)
 path=("$HOMEBREW_OPTIONAL_DIR/zsh/bin" $path)
+path=("$JAVA_BINARIES_DIR" $path)
 path=("$NVIM_VENV_BINARIES_DIR" $path)
-path=("$JAVA_HOME/bin" $path)
 path=("$UV_PYTHON_DIR/cpython-3.14.0-macos-aarch64-none/bin" $path)
 path=("$ZSH_SCRIPTS_DIR/package-management/fonts/bin" $path)
 path=("$ZSH_SCRIPTS_DIR/package-management/homebrew/bin" $path)
+path=("$ZSH_SCRIPTS_DIR/project-management/c/bin" $path)
 path=("$ZSH_SCRIPTS_DIR/typesetting/tex/bin" $path)
 path=("$ZSH_SCRIPTS_DIR/typesetting/tex/latex/bin" $path)
 path=("$ZSH_SCRIPTS_DIR/version-control/git/bin" $path)
@@ -78,14 +57,11 @@ setopt PROMPT_SUBST
 PROMPT='%F{#b4befe}%*%f %F{#b4befe}%~%f %F{#b4befe} '
 RPROMPT='%F{#b4befe}${vcs_info_msg_0_}'
 
-## VISUAL
-export VISUAL="$NVIM_EXECUTABLE"
-
 # Themes and plugins
 . "$ZSH_THEMES_DIR/catppuccin-mocha-zsh-syntax-highlighting.zsh"
-. "$HOMEBREW_PREFIX/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
-. "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
-. "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+. "$ZSH_AUTOCOMPLETE_DIR/zsh-autocomplete.plugin.zsh"
+. "$ZSH_AUTOSUGGESTIONS_DIR/zsh-autosuggestions.zsh"
+. "$ZSH_SYNTAX_HIGHLIGHTING_DIR/zsh-syntax-highlighting.zsh"
 
 # Keybindings (kitty)
 bindkey '^U' backward-kill-line   # Ctrl + u
@@ -114,17 +90,29 @@ alias c++='c++-15'
 ## cat | Use `bat --style=plain --paging=never` instead of `cat`
 alias cat='bat -pp'
 
-## ccr | Compile C source file into an executable that would be run
-alias ccr='c_compile_and_run'
+## cca | Compile C object files into a static library
+alias cca='c_compile_into_static_library'
 
 ## cce | Compile C source file into an executable
 alias cce='c_compile_into_executable'
 
-## ccl | Compile C object files into a shared library
-alias ccl='c_compile_into_shared_library'
-
 ## cco | Compile C source file into an object file
 alias cco='c_compile_into_object_file'
+
+## ccr | Compile C source file into an executable that would be run
+alias ccr='c_compile_and_run'
+
+## ccs | Compile C object files into a shared library
+alias ccs='c_compile_into_shared_library'
+
+## cdc | Run `cdecl explain`
+alias cdc='cdecl explain'
+
+## cdh | Run `cdecl`
+alias cdh='cdecl'
+
+## ci | Initialize C-project directory
+alias ci='c_init'
 
 ## clc | Copy last command
 ### Source: https://apple.stackexchange.com/a/110541
@@ -338,8 +326,8 @@ alias gswp='git switch private'
 ## guisw | Ignore a previously Git-tracked file from the index
 alias guisw='git update-index --skip-worktree'
 
-## help | Collection of community-maintained help pages for command-line tools
-alias help='tldr'
+## h | Collection of community-maintained help pages for command-line tools
+alias h='tldr'
 
 ## isodate | Return current date and time with format similar to ISO 8601 but with additional spaces
 alias isodate='echo -e "\e[38;2;166;227;161m$(date +%F'\''  '\''T%H:%M:%S'\''  '\''+07:00)"'
@@ -362,8 +350,14 @@ alias jku='jupyter kernelspec uninstall'
 ## kas | Kill all Automator services
 alias kas='pkill -9 com.apple.automator.runner'
 
-## kitren | Rename current kitty tab and window
-alias kitren='kitten_rename'
+## kf | Set font size in kitty
+alias kf='kitten_set_font_size'
+
+## ko | Open a project directory in kitty and run Neovim session associated with said directory in terminal mode
+alias ko='kitten_open_project'
+
+## kr | Rename current kitty tab and window
+alias kr='kitten_rename'
 
 ## la | List almost all files in current directory (except for `.` and `..`) with `lsd`
 alias la='lsd -A'
@@ -413,6 +407,9 @@ alias mgpi='magick_pdf2image'
 ## mgrtlc | Return top-left pixel-color
 alias mgrtlc='magick_return_top_left_color'
 
+## ms | Open man page in Neovim and search for option
+alias ms='man_search_option'
+
 ## nv | Run Neovim
 alias nv='nvim'
 
@@ -426,7 +423,7 @@ alias nvk='NVIM_APPNAME=nvims/kickstart nvim'
 alias nvs='nvim_switch_configuration'
 
 ## nvt | Run Neovim session associated with current directory, enter terminal mode, and silently search backward for branch returned by 'git status'
-alias nvt='nvim -c "lua require('\''persistence'\'').load()" -c terminal -c startinsert -c "silent! ?\v(^On branch )@<=(.{-})($)@=" -c nohlsearch'
+alias nvt='nvim_in_terminal_mode'
 
 ## py | Run Python interpreter
 alias py='py_interpret'
@@ -473,6 +470,10 @@ alias which='gwhich'
 ## https://unix.stackexchange.com/a/526429
 fpath=("$ZSH_INTERACTIVE_FUNCTIONS_DIR" $fpath)
 
+## brew | Function which evaluates Homebrew's shellenv (at most once)
+#         and runs the Homebrew executable (redefinition)
+autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/brew"
+
 ## clear | Clear screen (redefinition)
 autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/clear"
 
@@ -487,6 +488,12 @@ autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/c_compile_into_object_file"
 
 ## c_compile_into_shared_library | Compile C object files into a shared library
 autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/c_compile_into_shared_library"
+
+## c_compile_into_static_library | Compile C object files into a static library
+autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/c_compile_into_static_library"
+
+## c_init | Initialize C-project directory
+autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/c_init"
 
 ## copy_bundle_id | Copy bundle ID of macOS application
 autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/copy_bundle_id"
@@ -521,8 +528,14 @@ autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/git_show_with_separators"
 ## git_squash | Squash last N Git commits
 autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/git_squash"
 
+## kitten_open_project | Open a project directory in kitty and run Neovim session associated with said directory in terminal mode
+autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/kitten_open_project"
+
 ## kitten_rename | Rename current kitty tab and window
 autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/kitten_rename"
+
+## kitten_set_font_size | Set font size in kitty
+autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/kitten_set_font_size"
 
 ## magick_crop_default | My default ImageMagick crop command
 autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/magick_crop_default"
@@ -536,8 +549,14 @@ autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/magick_pdf2image"
 ## magick_return_top_left_color | Return top-left pixel-color
 autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/magick_return_top_left_color"
 
+## man_search_option | Open man page in Neovim and search for option
+autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/man_search_option"
+
 ## mkcd | Function combination of `mkdir` and `cd`
 autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/mkcd"
+
+## nvim_in_terminal_mode | Run Neovim session associated with current directory, enter terminal mode, and silently search backward for branch returned by 'git status'
+autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/nvim_in_terminal_mode"
 
 ## nvim_switch_configuration | Switch Neovim configurations
 autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/nvim_switch_configuration"
@@ -560,5 +579,24 @@ autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/py_interpret"
 ## reset_color | Reset terminal emulator's foreground color
 autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/reset_color"
 
-# Export environment to GNU Parallel
+# env_parallel | Shell function that exports the current environment to GNU parallel
 . "$HOMEBREW_BINARIES_DIR/env_parallel.zsh"
+
+# Restrict initialization of completion cache to once a day
+autoload -Uz compinit
+for dump in "$ZCOMPDUMP"(N.mh+24); do
+  compinit -d "$ZCOMPDUMP"
+done
+compinit -C -d "$ZCOMPDUMP"
+
+# References
+## XDG specifications
+### "XDG Base Directory, § 2.3: Partial". https://wiki.archlinux.org/title/XDG_Base_Directory#Partial
+
+## Zsh
+### "An Introduction to the Z Shell, § 3: Startup Files". https://zsh.sourceforge.io/Intro/intro_3.html
+### "Speed up zsh compinit by only checking cache once a day." https://gist.github.com/ctechols/ca1035271ad134841284?permalink_comment_id=3994613#gistcomment-3994613
+### "The Z Shell Manual, § 20.2.1: Use of compinit". https://zsh.sourceforge.io/Doc/Release/Completion-System.html#Use-of-compinit
+### "Zsh". https://wiki.archlinux.org/title/Zsh
+### "zsh: command not found: {compinstall,compinit,compdef}". https://unix.stackexchange.com/a/477909
+### "ZSH: .zprofile, .zshrc, .zlogin - What goes where?". https://apple.stackexchange.com/a/388623

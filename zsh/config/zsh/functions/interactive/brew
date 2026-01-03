@@ -1,0 +1,12 @@
+# ~/.config/zsh/functions/interactive/brew
+
+# Dependencies
+## Homebrew | https://brew.sh/
+
+# Definition
+if [ "$HAS_HOMEBREW_SHELLENV_BEEN_EVALUATED" = false ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+  HAS_HOMEBREW_SHELLENV_BEEN_EVALUATED=true
+fi
+
+/opt/homebrew/bin/brew "$@"

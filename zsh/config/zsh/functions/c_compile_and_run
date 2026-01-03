@@ -1,24 +1,23 @@
 #!/usr/bin/env zsh
 # ~/.config/zsh/functions/c_compile_and_run
-c_compile_and_run () {
-  c_source_file="$1"
-  filename_without_ext="${c_source_file:t:r}"
-  root_dir="${c_source_file:h}"
-  c_executable="$root_dir/$filename_without_ext-c-executable"
 
-  gcc-15 "-I$C_LIBRARIES_FLIBS_INCLUDE_DIR" \
-         "-I$C_LIBRARIES_FLIBS_INCLUDE_DIR/f-core" \
-         -Wall \
-         -Werror \
-         -Wextra \
-         -Wpedantic \
-         -g \
-         -o "$c_executable" \
-         -std=c23 \
+# Dependencies
+## gcc | https://formulae.brew.sh/formula/gcc
+
+# Definition
+c_compile_and_run () {
+  file_c_object_or_source="$1"
+
+  dir_root="${file_c_object_or_source:h}"
+  file_stem="${file_c_object_or_source:t:r}"
+  file_c_executable="$dir_root/$file_stem-c-executable"
+
+  gcc-15 "${GCC_OPTS_C[@]}" \
+         -o "$file_c_executable" \
          "${@:2}" \
-         "$c_source_file"
+         "$file_c_object_or_source"
 
   print -P "%F{green}"
-  "$c_executable"
+  "$file_c_executable"
   printf "\n"
 }

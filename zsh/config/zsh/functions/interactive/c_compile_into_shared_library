@@ -1,28 +1,39 @@
 # ~/.config/zsh/functions/interactive/c_compile_into_shared_library
-c_library_abbrev="$1"
-c_library_name="lib$c_library_abbrev.so"
-c_library_ver="$2"
-c_object_file_1="$3"
-root_dir="${c_object_file_1:h:h:h}"
-build_dir="$root_dir/build"
-lib_dir="$build_dir/lib"
-c_library_ver_major="${c_library_ver:r:r}"
-c_library_ver_minor="${c_library_ver:r:e}"
-c_library_ver_patch="${c_library_ver:e}"
-c_library_file="$lib_dir/$c_library_name.$c_library_ver"
-[ -d "$lib_dir" ] || mkdir -p "$lib_dir"
 
-gcc-15 "-I$C_LIBRARIES_FLIBS_INCLUDE_DIR" \
-       "-I$C_LIBRARIES_FLIBS_INCLUDE_DIR/f-core" \
-       -Wall \
-       -Werror \
-       -Wextra \
-       -Wpedantic \
-       "-Wl,-install_name,$c_library_name.$c_library_ver_major" \
-       -g \
-       -o "$c_library_file" \
-       -shared \
-       -std=c23 \
-       "$c_object_file_1" \
-       "${@:4}" \
-       -lc
+# Dependencies
+## coreutils | https://formulae.brew.sh/formula/coreutils
+## gcc | https://formulae.brew.sh/formula/gcc
+
+# Definition
+abbrev="$1"
+ver="$2"
+file_c_object_1="$3"
+
+dir_root="${file_c_object_1:h:h:h}"
+dir_build="$dir_root/build"
+dir_lib="$dir_build/lib"
+dir_runtime="$(realpath "$dir_lib")"
+file_ext=".dylib"
+file_name="lib$abbrev$file_ext"
+file_c_library="$dir_lib/$file_name.$ver"
+ver_major="${ver:r:r}"
+ver_minor="${ver:r:e}"
+ver_patch="${ver:e}"
+runtime_name="$dir_runtime/$file_name.$ver_major"
+runtime_name_option="-install_name"
+shared_lib_option="-dynamiclib"
+
+[ -d "$dir_lib" ] || mkdir -p "$dir_lib"
+
+gcc-15 "${GCC_OPTS_C[@]}" \
+       "-Wl,$runtime_name_option,$runtime_name" \
+       "$shared_lib_option" \
+       -o "$file_c_library" \
+       "$file_c_object_1" \
+       "${@:4}"
+
+cd "$dir_lib"
+ln -fns "$file_name.$ver" "$file_name.$ver_major.$ver_minor"
+ln -fns "$file_name.$ver_major.$ver_minor" "$file_name.$ver_major"
+ln -fns "$file_name.$ver_major" "$file_name"
+cd - > "/dev/null"

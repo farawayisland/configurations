@@ -22,7 +22,7 @@ nvim_switch_configuration () {
   else
     config="nvims/$config"
     alias nv="NVIM_APPNAME=$config nvim"
-    alias nvt="NVIM_APPNAME=$config nvim -c \"lua require('persistence').load()\" -c terminal -c startinsert -c \"silent! ?\v(^On branch )@<=(.{-})($)@=\" -c nohlsearch"
+    alias nvt="NVIM_APPNAME=$config nvim -c \"lua require('persistence').load()\" -c terminal -c startinsert -c \"sil! ?\v(^On branch )@<=(.{-})($)@=\" -c nohlsearch"
   fi
   NVIM_APPNAME=$config nvim "$@"
 }
