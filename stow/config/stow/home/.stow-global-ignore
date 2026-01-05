@@ -5,6 +5,7 @@
 
 # Git
 \.git
+\.github
 \.gitignore
 
 # Miscellaneous
