@@ -4,15 +4,15 @@ If:
 CompileFlags:
   Compiler: gcc-15
   Add:
-    - -Wall
-    - -Werror
-    - -Wextra
-    - -Wpedantic
-    - -g
-
+  - -Wall
+  - -Werror
+  - -Wextra
+  - -Wpedantic
+  - -g
+---
 If:
   PathMatch: [.*\.c]
 CompileFlags:
   Compiler: gcc-15
   Add:
-    - -std=c23
+  - -std=c23
