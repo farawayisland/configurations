@@ -2,5 +2,9 @@
 ## Dependencies:
 ## uv | https://formulae.brew.sh/formula/uv
 print -P "%F{green}"
-uv run "$@"
+if [ -z "$1" ]; then
+  uv run "python"
+else
+  uv run "$@"
+fi
 printf "\n"

@@ -1,6 +1,5 @@
 #!/usr/bin/env zsh
 # ~/.zshenv
-
 # Environment variables and aliases for profiling
 if [ "${ZSH_DEBUG:=false}" = true ]; then
   zmodload zsh/zprof
@@ -324,7 +323,7 @@ if [ ! -s "$CLANGD_CONFIG_FILE" ]; then
       | $SD_EXECUTABLE -- '^(-)' '      - $1'\
       | $SD_EXECUTABLE '\$C_LIBRARIES_FLIBS_INCLUDE_DIR'\
         $C_LIBRARIES_FLIBS_INCLUDE_DIR)\n""\
-    \n\
+    ---\n\
     If:\n\
       PathMatch: [.*\.c]\n\
     CompileFlags:\n\
@@ -357,7 +356,13 @@ fi
 
 ## GNU Emacs
 export EMACS_CONFIG_DIR="$XDG_CONFIG_HOME/emacs"
+export EMACS_PLUS_CONFIG_DIR="$XDG_CONFIG_HOME/emacs-plus"
 [ -d "$EMACS_CONFIG_DIR" ] || "$MKDIR_EXECUTABLE" -p "$EMACS_CONFIG_DIR"
+[ -d "$EMACS_PLUS_CONFIG_DIR" ] || "$MKDIR_EXECUTABLE" -p "$EMACS_PLUS_CONFIG_DIR"
+
+### Emacs Plus
+export HOMEBREW_EMACS_PLUS_BUILD_CONFIG="$EMACS_PLUS_CONFIG_DIR/build.yml"
+[ -f "$HOMEBREW_EMACS_PLUS_BUILD_CONFIG" ] || "$MKDIR_EXECUTABLE" -p "$HOMEBREW_EMACS_PLUS_BUILD_CONFIG"
 
 ## fzf
 ### Theme: https://github.com/catppuccin/fzf/blob/main/themes/catppuccin-fzf-mocha.sh
@@ -425,6 +430,11 @@ export NVIMS_CONFIG_DIR="$XDG_CONFIG_HOME/nvims"
 [ -d "$NVIM_CONFIG_DIR" ] || "$MKDIR_EXECUTABLE" -p "$NVIM_CONFIG_DIR"
 [ -f "$NVIM_EXECUTABLE" ] || "$HOMEBREW_EXECUTABLE" install neovim
 [ -d "$NVIMS_CONFIG_DIR" ] || "$MKDIR_EXECUTABLE" -p "$NVIMS_CONFIG_DIR"
+
+### Specific configurations
+export NVIM_KICKSTART_CONFIG_DIR="$NVIMS_CONFIG_DIR/kickstart"
+export NVIM_NONE_CONFIG_DIR="$NVIMS_CONFIG_DIR/none"
+export NVIM_OLD_CONFIG_DIR="$NVIMS_CONFIG_DIR/old"
 
 ## PowerShell
 export PWSH_CONFIG_DIR="$XDG_CONFIG_HOME/.windows/pwsh"
@@ -698,7 +708,7 @@ fi
 alias zr='print -P "%F{red}"\
   && /usr/bin/trash "$ZSH_CACHE_DIR"\
   && printf "trash \"%s\"\n" "$ZSH_CACHE_DIR"\
-  && "$FD_EXECUTABLE" -H --regex "^.*((\.zwc(\.old)?)|(\.zcompdump.*))$" -p "$ZDOTDIR"\
+  && "$FD_EXECUTABLE" -E ".git*" -H -I --regex "^.*((\.zwc(\.old)?)|(\.zcompdump.*))$" -p "${ZDOTDIR:=$XDG_CONFIG_HOME/zsh}"\
   | "$PARALLEL_EXECUTABLE" "\
    printf \"trash \\\"%s\\\"\n\" \"{}\";\
    /usr/bin/trash \"{}\""\

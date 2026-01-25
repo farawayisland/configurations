@@ -79,8 +79,8 @@ alias av='. .venv/bin/activate'
 alias bcb="$ZSH_SCRIPTS_DIR/package-management/homebrew/bin/create_brewfile"
 
 ## blp | List Homebrew packages and Mac App Store applications
-alias blp=\
-  "$ZSH_SCRIPTS_DIR/package-management/homebrew/bin/\ list_homebrew_packages"
+alias blp="\
+  $ZSH_SCRIPTS_DIR/package-management/homebrew/bin/list_homebrew_packages"
 
 ## bruu | Update Homebrew, Homebrew packages,
 ## and upgrade Mac App Store applications
@@ -455,6 +455,18 @@ alias nvd='nvim -d'
 
 ## nvk | Run Neovim with the `nvims/kickstart` configuration
 alias nvk='NVIM_APPNAME=nvims/kickstart nvim'
+
+## nvn | Run Neovim with the `nvims/none` configuration
+alias nvn='NVIM_APPNAME=nvims/none nvim'
+
+## nvo | Run Neovim with the `nvims/old` configuration
+alias nvo='NVIM_APPNAME=nvims/old nvim'
+
+## nvr | Run Neovim after rebuilding symlinks to the `nvims/kickstart` configuration
+alias nvr='trash $NVIM_CONFIG_DIR\
+  && mkdir -p $NVIM_CONFIG_DIR\
+  && stow -d $NVIM_KICKSTART_CONFIG_DIR -t $NVIM_CONFIG_DIR .\
+  && nvim'
 
 ## nvs | Run Neovim configuration switcher
 alias nvs='nvim_switch_configuration'
