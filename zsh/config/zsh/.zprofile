@@ -5,7 +5,7 @@
 # `eval "$(/opt/homebrew/bin/brew shellenv)"`
 # is called (at most once) by my `brew` function which overrides
 # (but runs) the Homebrew executable
-export HAS_HOMEBREW_SHELLENV_BEEN_EVALUATED=false
+export HAS_HOMEBREW_SHELLENV_BEEN_EVALUATED=""
 
 # References
 ## Homebrew

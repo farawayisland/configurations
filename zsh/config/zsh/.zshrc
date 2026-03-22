@@ -498,20 +498,40 @@ alias ua='uv add'
 ## ua | Add Python-project dependencies to the development dependency group
 alias uad='uv add --dev'
 
-## ui | Initialize new Python project
+## ui | Initialize new Python project (application by default, i.e., `--app`)
 alias ui='uv init'
 
 ## uik | Create IPython kernel
 alias uik='uv run ipython kernel install --user --env VIRTUAL_ENV $(pwd)/.venv'
 
-## uil | List Python packages installed in current virtual environment
-alias uil='uv pip list'
+## uil | Initialize new Python library project
+alias uil='uv init --lib'
+
+## uip | Initialize new Python packaged-application project
+alias uip='uv init --package'
 
 ## uj | Run Jupyter Lab
 alias uj='uv run jupyter lab'
 
+## upl | List Python packages installed in current virtual environment
+alias upl='uv pip list'
+
 ## ur | Run command or Python script
 alias ur='uv run'
+
+## v | Run Vim
+alias v="\
+  export VIMINIT='\
+    let \$MYVIMRC=\"\$VIM_CONFIG_DIR/init.vim\"\
+    | source \$MYVIMRC'\
+  && vim"
+
+## vd | Run Vim in diff mode
+alias vd="\
+  export VIMINIT='\
+    let \$MYVIMRC=\"\$VIM_CONFIG_DIR/init.vim\"\
+    | source \$MYVIMRC'\
+  && vim -d"
 
 ## which | Homebrew-Installed GNU which
 alias which='gwhich'

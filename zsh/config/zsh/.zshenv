@@ -435,6 +435,19 @@ export NVIMS_CONFIG_DIR="$XDG_CONFIG_HOME/nvims"
 export NVIM_KICKSTART_CONFIG_DIR="$NVIMS_CONFIG_DIR/kickstart"
 export NVIM_NONE_CONFIG_DIR="$NVIMS_CONFIG_DIR/none"
 export NVIM_OLD_CONFIG_DIR="$NVIMS_CONFIG_DIR/old"
+[ -d "$NVIM_KICKSTART_CONFIG_DIR" ] || "$MKDIR_EXECUTABLE" -p "$NVIM_KICKSTART_CONFIG_DIR"
+[ -d "$NVIM_NONE_CONFIG_DIR" ] || "$MKDIR_EXECUTABLE" -p "$NVIM_NONE_CONFIG_DIR"
+[ -d "$NVIM_OLD_CONFIG_DIR" ] || "$MKDIR_EXECUTABLE" -p "$NVIM_OLD_CONFIG_DIR"
+
+### Neovide
+export NEOVIDE_CONFIG_DIR="$XDG_CONFIG_HOME/neovide"
+export NEOVIDE_EXECUTABLE="$HOMEBREW_BINARIES_DIR/neovide"
+[ -d "$NEOVIDE_CONFIG_DIR" ] || "$MKDIR_EXECUTABLE" -p "$NEOVIDE_CONFIG_DIR"
+[ -f "$NEOVIDE_EXECUTABLE" ] || "$HOMEBREW_EXECUTABLE" install --cask neovide-app
+
+#### Configurations
+export NEOVIDE_CONFIG_FILE="$NEOVIDE_CONFIG_DIR/config.toml"
+export NEOVIM_BIN="$NVIM_EXECUTABLE"
 
 ## PowerShell
 export PWSH_CONFIG_DIR="$XDG_CONFIG_HOME/.windows/pwsh"
@@ -463,7 +476,30 @@ export VENV_HOME="$PYTHON_CONFIG_DIR/.venvs"
 
 #### # Neovim
 export NVIM_VENV_DIR="$VENV_HOME/neovim"
-[ -d "$NVIM_VENV_DIR" ] || ("$UV_EXECUTABLE" init "$NVIM_VENV_DIR" && "$UV_EXECUTABLE" add --dev --project "$NVIM_VENV_DIR" cairosvg ipykernel ipynbname jupyter_client jupytext kagglehub kaleido latexminted marimo matplotlib numpy openpyxl pandas plotly pnglatex polars pynvim pyperclip quarto scikit-learn seaborn)
+export NVIM_VENV_PACKAGES=(
+  'cairosvg'
+  'ipykernel'
+  'ipynbname'
+  'jupyter_client'
+  'jupytext'
+  'kagglehub'
+  'kaleido'
+  'latexminted'
+  'marimo'
+  'matplotlib'
+  'numpy'
+  'openpyxl'
+  'pandas'
+  'plotly'
+  'pnglatex'
+  'polars'
+  'pynvim'
+  'pyperclip'
+  'quarto'
+  'scikit-learn'
+  'seaborn'
+)
+[ -d "$NVIM_VENV_DIR" ] || ("$UV_EXECUTABLE" init "$NVIM_VENV_DIR" && "$UV_EXECUTABLE" add --dev --project "$NVIM_VENV_DIR" "${NVIM_VENV_PACKAGES[@]}")
 
 #### ## Binaries
 export NVIM_VENV_BINARIES_DIR="$NVIM_VENV_DIR/.venv/bin"
@@ -590,6 +626,18 @@ export LATEX_STANDALONE_PRESET="$LATEX_PACKAGES/standalone-preset" # Git-tracked
 [ -d "$LATEX_SCRBOOK_PRESET" ] || "$MKDIR_EXECUTABLE" -p "$LATEX_SCRBOOK_PRESET"
 [ -d "$LATEX_STANDALONE_PRESET" ] || "$MKDIR_EXECUTABLE" -p "$LATEX_STANDALONE_PRESET"
 
+## Vim
+export VIM_CONFIG_DIR="$XDG_CONFIG_HOME/vim"
+export VIM_EXECUTABLE="$HOMEBREW_OPTIONAL_DIR/vim/bin/vim"
+export VIMS_CONFIG_DIR="$XDG_CONFIG_HOME/vims"
+[ -d "$VIM_CONFIG_DIR" ] || "$MKDIR_EXECUTABLE" -p "$VIM_CONFIG_DIR"
+[ -f "$VIM_EXECUTABLE" ] || "$HOMEBREW_EXECUTABLE" install vim
+[ -d "$VIMS_CONFIG_DIR" ] || "$MKDIR_EXECUTABLE" -p "$VIMS_CONFIG_DIR"
+
+### Specific configurations
+export VIM_NONE_CONFIG_DIR="$VIMS_CONFIG_DIR/none"
+[ -d "$VIM_NONE_CONFIG_DIR" ] || "$MKDIR_EXECUTABLE" -p "$VIM_NONE_CONFIG_DIR"
+
 ## Visual Studio Code
 export VSCODE_CONFIG_DIR="$XDG_CONFIG_HOME/visual-studio-code"
 export VSCODE_EXECUTABLE="$HOMEBREW_BINARIES_DIR/code"
@@ -708,7 +756,7 @@ fi
 alias zr='print -P "%F{red}"\
   && /usr/bin/trash "$ZSH_CACHE_DIR"\
   && printf "trash \"%s\"\n" "$ZSH_CACHE_DIR"\
-  && "$FD_EXECUTABLE" -E ".git*" -H -I --regex "^.*((\.zwc(\.old)?)|(\.zcompdump.*))$" -p "${ZDOTDIR:=$XDG_CONFIG_HOME/zsh}"\
+  && "$FD_EXECUTABLE" -E ".git*" -HI --regex "^.*((\.zwc(\.old)?)|(\.zcompdump.*))$" -p "${ZDOTDIR:=$XDG_CONFIG_HOME/zsh}"\
   | "$PARALLEL_EXECUTABLE" "\
    printf \"trash \\\"%s\\\"\n\" \"{}\";\
    /usr/bin/trash \"{}\""\
