@@ -1,7 +1,12 @@
 # ~/.config/neovide/config.toml
-## https://neovide.dev/command-line-reference.html#frame
+# Neovim path
+neovim-bin = "/opt/homebrew/bin/nvim"
+
+# Frame
+## Source: https://neovide.dev/command-line-reference.html#frame.
 frame = "buttonless"
 
+# Fonts
 [font]
 size = 16
 
