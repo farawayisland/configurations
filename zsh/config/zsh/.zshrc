@@ -159,6 +159,9 @@ alias fdelce="find . -name '*-c-executable*' -print -type f -delete"
 ## fdelds | Recursively find and delete '.DS_Store' files in current directory
 alias fdelds="find . -name '.DS_Store' -print -type f -delete"
 
+## fdeldsym | Recursively find and delete '*.dSYM' dirs in current directory
+alias fdeldsym="find . -path '*/*.dSYM*' -print -delete"
+
 ## g++ | Homebrew-Installed GNU Compiler Collection's g++
 alias g++='g++-15'
 
@@ -459,9 +462,6 @@ alias nvk='NVIM_APPNAME=nvims/kickstart nvim'
 ## nvn | Run Neovim with the `nvims/none` configuration
 alias nvn='NVIM_APPNAME=nvims/none nvim'
 
-## nvo | Run Neovim with the `nvims/old` configuration
-alias nvo='NVIM_APPNAME=nvims/old nvim'
-
 ## nvr | Run Neovim after rebuilding symlinks to the `nvims/kickstart` configuration
 alias nvr='trash $NVIM_CONFIG_DIR\
   && mkdir -p $NVIM_CONFIG_DIR\
@@ -498,20 +498,40 @@ alias ua='uv add'
 ## ua | Add Python-project dependencies to the development dependency group
 alias uad='uv add --dev'
 
-## ui | Initialize new Python project
+## ui | Initialize new Python project (application by default, i.e., `--app`)
 alias ui='uv init'
 
 ## uik | Create IPython kernel
 alias uik='uv run ipython kernel install --user --env VIRTUAL_ENV $(pwd)/.venv'
 
-## uil | List Python packages installed in current virtual environment
-alias uil='uv pip list'
+## uil | Initialize new Python library project
+alias uil='uv init --lib'
+
+## uip | Initialize new Python packaged-application project
+alias uip='uv init --package'
 
 ## uj | Run Jupyter Lab
 alias uj='uv run jupyter lab'
 
+## upl | List Python packages installed in current virtual environment
+alias upl='uv pip list'
+
 ## ur | Run command or Python script
 alias ur='uv run'
+
+## v | Run Vim
+alias v="\
+  export VIMINIT='\
+    let \$MYVIMRC=\"\$VIM_CONFIG_DIR/init.vim\"\
+    | source \$MYVIMRC'\
+  && vim"
+
+## vd | Run Vim in diff mode
+alias vd="\
+  export VIMINIT='\
+    let \$MYVIMRC=\"\$VIM_CONFIG_DIR/init.vim\"\
+    | source \$MYVIMRC'\
+  && vim -d"
 
 ## which | Homebrew-Installed GNU which
 alias which='gwhich'
