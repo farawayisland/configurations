@@ -27,7 +27,7 @@ c_compile_into_shared_library () {
 
   [ -d "$dir_lib" ] || mkdir -p "$dir_lib"
 
-  gcc-15 "${GCC_OPTS_C[@]}" \
+  gcc-16 "${GCC_OPTS_C[@]}" \
          "-Wl,$runtime_name_option,$runtime_name" \
          "$shared_lib_option" \
          -o "$file_c_library" \

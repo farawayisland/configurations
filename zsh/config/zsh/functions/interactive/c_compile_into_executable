@@ -14,7 +14,7 @@ file_c_executable="$dir_bin/$file_stem-c-executable"
 
 [ -d "$dir_bin" ] || mkdir -p "$dir_bin"
 
-gcc-15 "${GCC_OPTS_C[@]}" \
+gcc-16 "${GCC_OPTS_C[@]}" \
        -o "$file_c_executable" \
        "$file_c_object_or_source_1" \
        "${@:2}"

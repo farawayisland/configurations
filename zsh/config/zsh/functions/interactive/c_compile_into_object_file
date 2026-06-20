@@ -14,7 +14,7 @@ file_c_object="$dir_obj/$file_stem.o"
 
 [ -d "$dir_obj" ] || mkdir -p "$dir_obj"
 
-gcc-15 "${GCC_OPTS_C[@]}" \
+gcc-16 "${GCC_OPTS_C[@]}" \
        -c \
        -fPIC \
        -o "$file_c_object" \

@@ -241,7 +241,7 @@ export C_LIBRARIES_FLIBS_SRC_DIR="$C_LIBRARIES_FLIBS_DIR/src"
 
 ### GNU Compiler Collection (GCC)
 export GCC_CONFIG_DIR="$C_CPP_CONFIG_DIR/gcc"
-export GCC_EXECUTABLE="$HOMEBREW_BINARIES_DIR/gcc-15"
+export GCC_EXECUTABLE="$HOMEBREW_BINARIES_DIR/gcc-16"
 [ -d "$GCC_CONFIG_DIR" ] || "$MKDIR_EXECUTABLE" -p "$GCC_CONFIG_DIR"
 [ -f "$GCC_EXECUTABLE" ] || "$HOMEBREW_EXECUTABLE" install gcc
 
@@ -315,7 +315,7 @@ if [ ! -s "$CLANGD_CONFIG_FILE" ]; then
     If:\n\
       PathMatch: [.*\.c, .*\.h]\n\
     CompileFlags:\n\
-      Compiler: gcc-15\n\
+      Compiler: gcc-16\n\
       Add:\n""$(\
       $TAIL_EXECUTABLE -n +2 $GCC_OPTS_C_FILE\
       | $HEAD_EXECUTABLE -n -1 -\
@@ -327,7 +327,7 @@ if [ ! -s "$CLANGD_CONFIG_FILE" ]; then
     If:\n\
       PathMatch: [.*\.c]\n\
     CompileFlags:\n\
-      Compiler: gcc-15\n\
+      Compiler: gcc-16\n\
       Add:\n""$(\
       $TAIL_EXECUTABLE -n 1 $GCC_OPTS_C_FILE\
       | $TR_EXECUTABLE -d '"'\

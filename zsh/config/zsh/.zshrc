@@ -178,7 +178,7 @@ alias gbsc='git branch --show-current'
 alias gcam='git commit --amend -m'
 
 ## gcc | Homebrew-Installed GNU Compiler Collection's gcc
-alias gcc='gcc-15'
+alias gcc='gcc-16'
 
 ## gchp | Apply the changes introduced by some existing Git commits
 alias gchp='git cherry-pick'

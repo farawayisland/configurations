@@ -16,7 +16,7 @@ c_compile_into_object_file () {
 
   [ -d "$dir_obj" ] || mkdir -p "$dir_obj"
 
-  gcc-15 "${GCC_OPTS_C[@]}" \
+  gcc-16 "${GCC_OPTS_C[@]}" \
          -c \
          -fPIC \
          -o "$file_c_object" \
