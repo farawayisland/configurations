@@ -682,7 +682,11 @@ export CONFIGURATIONS="$HOME/Configurations" # Git-tracked
 export ACADEMIC="$PROJECTS/Academic"
 [ -d "$ACADEMIC" ] || "$MKDIR_EXECUTABLE" -p "$ACADEMIC"
 
-#### Undergraduate
+#### frwyslnd.math
+export FRWYSLND_MATH="$ACADEMIC/frwyslnd.math" # Git-tracked
+[ -d "$FRWYSLND_MATH" ] || "$MKDIR_EXECUTABLE" -p "$FRWYSLND_MATH"
+
+#### undergraduate-projects
 export UNDERGRADUATE="$ACADEMIC/undergraduate" # Git-tracked
 [ -d "$UNDERGRADUATE" ] || "$MKDIR_EXECUTABLE" -p "$UNDERGRADUATE"
 
