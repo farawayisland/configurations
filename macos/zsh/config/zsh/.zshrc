@@ -167,8 +167,8 @@ alias dv='deactivate'
 ## es | Silently run Vim's or Neovim's Ex command then exit
 alias es='ex_in_silent_mode'
 
-## g | Run `git`
-alias g='git'
+## g | Show status of current Git branch
+alias g='git status'
 
 ## g++ | Homebrew-Installed GNU Compiler Collection's g++
 alias g++='g++-15'
@@ -333,6 +333,9 @@ alias grslm='git reset --soft HEAD^\
 ## grst | Restore current Git working tree files
 alias grst='git restore'
 
+## grstd | Restore currently deleted Git working tree files
+alias grstd="git ls-files -d | parallel 'git restore \"{}\"'"
+
 ## grsts | Unstage current Git working tree files
 alias grsts='git restore -S'
 
@@ -395,8 +398,8 @@ alias gswm='git switch main'
 ## gswp | Switch to private Git branch
 alias gswp='git switch private'
 
-## gu | Show status of current Git branch
-alias gu='git status'
+## gt | Run `git`
+alias gt='git'
 
 ## guisw | Ignore a previously Git-tracked file from the index
 alias guisw='git update-index --skip-worktree'
