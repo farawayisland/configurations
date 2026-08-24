@@ -674,162 +674,19 @@ alias which='gwhich'
 ## https://stackoverflow.com/a/63661686
 ## https://unix.stackexchange.com/a/526429
 fpath=("$ZSH_INTERACTIVE_FUNCTIONS_DIR" $fpath)
+() {
+    ### Add our local functions dir to the fpath.
+    ### FPATH is already tied to fpath, but this adds a uniqueness constraint to
+    ### prevent duplicate entries.
+    typeset -TUg +x FPATH="$ZSH_INTERACTIVE_FUNCTIONS_DIR":$FPATH fpath
 
-## brew | Function which evaluates Homebrew's shellenv (at most once)
-#         and runs the Homebrew executable (redefinition)
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/brew"
+    ### Autoload the functions.
+    if [[ -d "$ZSH_INTERACTIVE_FUNCTIONS_DIR" ]]; then
+        autoload -Uz ${=$(cd "$ZSH_INTERACTIVE_FUNCTIONS_DIR" && printf '%s\n' *)}
+    fi
+}
 
-## clear | Clear screen (redefinition)
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/clear"
-
-## c_compile_and_run | Compile C source file into
-## an executable that would be run
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/c_compile_and_run"
-
-## c_compile_into_executable | Compile C source file into an executable
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/c_compile_into_executable"
-
-## c_compile_into_object_file | Compile C source file into an object file
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/c_compile_into_object_file"
-
-## c_compile_into_shared_library | Compile C object files into a shared library
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/c_compile_into_shared_library"
-
-## c_compile_into_static_library | Compile C object files into a static library
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/c_compile_into_static_library"
-
-## c_init | Initialize C-project directory
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/c_init"
-
-## copy_bundle_id | Copy bundle ID of macOS application
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/copy_bundle_id"
-
-## diff_with_separators | Function combination of `diff --color -u`
-## and `print_separator`
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/diff_with_separators"
-
-## exiftool_show_duration | Recursively show duration of audio
-## and video files with ExifTool
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/exiftool_show_duration"
-
-## ex_in_silent_mode | Silently run Vim's or Neovim's Ex command then exit
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/ex_in_silent_mode"
-
-## find_git_repositories | Find Git repositories in ~/.config, ~/Configurations,
-## and ~/Projects
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/find_git_repositories"
-
-## find_stow_local_ignores | Find local ignore lists for GNU stow in ~/.config,
-## ~/Configurations, and ~/Projects
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/find_stow_local_ignores"
-
-## get_bundle_id | Get bundle ID of macOS application
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/get_bundle_id"
-
-## git_diff_with_separators | Function combination of `git diff` and `print_separator`
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/git_diff_with_separators"
-
-## git_diff_with_separators_counting_from_head | Function combination of
-## `git diff` and `print_separator` counting from HEAD
-autoload -Uz\
-  "$ZSH_INTERACTIVE_FUNCTIONS_DIR/git_diff_with_separators_counting_from_head"
-
-## git_log_with_separators | Function combination of `git log`
-## and `print_separator`
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/git_log_with_separators"
-
-## git_review | My Git review command
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/git_review"
-
-## git_review_counting_from_head | My Git review command counting from HEAD
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/git_review_counting_from_head"
-
-## git_sanitize | Sanitize files with no newlines at end-of-file
-## and `print_separator`
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/git_sanitize"
-
-## git_show_with_separators | Function combination of `git show`
-## and `print_separator`
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/git_show_with_separators"
-
-## git_squash | Squash last N Git commits
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/git_squash"
-
-## inkscape_conv | My Inkscape format-conversion command
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/inkscape_conv"
-
-## kitten_open_project | Open a project directory in kitty
-## and run Neovim session associated with said directory in terminal mode
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/kitten_open_project"
-
-## kitten_rename | Rename current kitty tab and window
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/kitten_rename"
-
-## kitten_set_font_size | Set font size in kitty
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/kitten_set_font_size"
-
-## magick_crop | My ImageMagick crop command
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/magick_crop"
-
-## magick_diff | Diff images
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/magick_diff"
-
-## magick_diff_pdf | Diff image-converted PDFs
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/magick_diff_pdf"
-
-## magick_conv | My ImageMagick format-conversion command
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/magick_conv"
-
-## magick_extent | My ImageMagick extent command
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/magick_extent"
-
-## magick_top_left_color | Return top-left pixel-color
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/magick_top_left_color"
-
-## man_search_option | Open man page in Neovim and search for option
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/man_search_option"
-
-## mkcd | Function combination of `mkdir` and `cd`
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/mkcd"
-
-## nvim_in_terminal_mode | Run Neovim session associated with current directory,
-## enter terminal mode,
-## and silently search backward for branch returned by 'git status'
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/nvim_in_terminal_mode"
-
-## nvim_switch_configuration | Switch Neovim configurations
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/nvim_switch_configuration"
-
-## oxipng | My oxipng command
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/oxipng_optimize"
-
-## pause | Pause and wait for user input
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/pause"
-
-## pause_and_print_separator | Function combination of `pause`
-## and `print_separator`
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/pause_and_print_separator"
-
-## print_green | Print green-colored string
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/print_green"
-
-## print_red | Print red-colored string
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/print_red"
-
-## print_separator | Print line separator
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/print_separator"
-
-## py_interpret | Run Python interpreter
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/py_interpret"
-
-## reset_color | Reset terminal emulator's foreground color
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/reset_color"
-
-## sevenzip | My 7-Zip command.
-autoload -Uz "$ZSH_INTERACTIVE_FUNCTIONS_DIR/sevenzip"
-
-## env_parallel | Shell function that exports the current environment
-## to GNU parallel
+## env_parallel
 . "$HOMEBREW_BINARIES_DIR/env_parallel.zsh"
 
 # Restrict initialization of completion cache to once a day
