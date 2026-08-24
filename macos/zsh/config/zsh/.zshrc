@@ -535,6 +535,9 @@ alias mge='magick_extent'
 ## mi | Run `make install`
 alias mi='make install'
 
+## mk | Run `mkdir -p`
+alias mk='mkdir -p'
+
 ## mn | Run `make -n`
 alias mn='make -n'
 
@@ -627,6 +630,9 @@ alias tl='tlmgr'
 
 ## tlu | Update TeX Live with tlmgr
 alias tlu='sudo tlmgr update --self && sudo tlmgr update --all'
+
+## to | Run `touch`
+alias to='touch'
 
 ## ua | Add Python-project dependencies
 alias ua='uv add'
